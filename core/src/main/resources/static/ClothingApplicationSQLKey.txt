@@ -1,0 +1,11 @@
+SQL Chart Key
+
+PK == Primary Key
+FK == Foreign Key
+INT == Integer
+STR == String
+BOOL == Boolean
+
+* == Unique
+++ == auto_increment
+# == not_null
