@@ -1,6 +1,6 @@
-package repo;
+package outfitcore.com.repo;
 
-import domain.Hat;
+import outfitcore.com.domain.Hat;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface HatRepository extends JpaRepository<Hat, Integer> {

@@ -1,4 +1,4 @@
-package com.ruwe.samruwe.util;
+package ruwe.samruwe.util;
 
 public final class ViewNames {
 

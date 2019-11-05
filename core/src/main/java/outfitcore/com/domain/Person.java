@@ -1,4 +1,4 @@
-package domain;
+package outfitcore.com.domain;
 
 import javax.persistence.*;
 
@@ -10,7 +10,8 @@ public class Person {
     private String userName;
     private String password;
 
-    public Person() {}
+    public Person() {
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

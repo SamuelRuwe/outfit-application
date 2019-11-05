@@ -1,6 +1,4 @@
-package domain;
-
-import org.hibernate.annotations.Type;
+package outfitcore.com.domain;
 
 import javax.persistence.*;
 
@@ -14,15 +12,17 @@ public class Hat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idHat;
     private int idPerson;
-    @Column(name = "formal", nullable = false)
-    @Type(type = "org.hibernate.type.NumericBooleanType")
-    private boolean formal;
+//    @Column(name = "formal", nullable = false)
+//    @Type(type = "org.hibernate.type.NumericBooleanType")
+//    potential way to use a boolean from an int. Will test later. Going to use outfitcore.com.config class for now. 11/5/2019
+
+    private int formal;
     private String color;
     private int minTemp;
     private int maxTemp;
-    @Column(name = "clean", nullable = false)
-    @Type(type = "org.hibernate.type.NumericBooleanType")
-    private boolean clean;
+//    @Column(name = "clean", nullable = false)
+//    @Type(type = "org.hibernate.type.NumericBooleanType")
+    private int clean;
     private int lastWorn;
 
     // constructors ==
@@ -45,11 +45,11 @@ public class Hat {
         this.idPerson = idPerson;
     }
 
-    public boolean isFormal() {
+    public int isFormal() {
         return formal;
     }
 
-    public void setFormal(boolean formal) {
+    public void setFormal(int formal) {
         this.formal = formal;
     }
 
@@ -77,11 +77,11 @@ public class Hat {
         this.maxTemp = maxTemp;
     }
 
-    public boolean isClean() {
+    public int isClean() {
         return clean;
     }
 
-    public void setClean(boolean clean) {
+    public void setClean(int clean) {
         this.clean = clean;
     }
 
@@ -91,5 +91,9 @@ public class Hat {
 
     public void setLastWorn(int lastWorn) {
         this.lastWorn = lastWorn;
+    }
+
+    public boolean checkBoolean(int i) {
+        return i == 1;
     }
 }

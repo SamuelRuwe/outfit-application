@@ -1,6 +1,6 @@
-package com.ruwe.samruwe.config;
+package ruwe.samruwe.config;
 
-import com.ruwe.samruwe.util.ViewNames;
+import ruwe.samruwe.util.ViewNames;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;

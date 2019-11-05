@@ -18,6 +18,7 @@
     <modules>
         <module>core</module>
         <module>web</module>
+        <module>console</module>
     </modules>
 
     <properties>
