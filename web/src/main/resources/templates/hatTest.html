@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Manager</title>
+</head>
+<body>
+<div align="center">
+    <h1>Product Manager</h1>
+    <a href="new">Display Person</a>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Name</th>
+                <th>Brandy and ?S?</th>
+                <th>Made in</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr th:each="hat : ${listHats}">
+            <td th:text="${hat.hatid}">Hat ID</td>
+            <td th:text="${hat.ownerid}">OwnerId</td>
+            <td th:text="${hat.color}">Color</td>
+            <td>
+                <a th:href="@{'/edit/' + ${hat.hatid}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/delete/' + ${hat.hatid}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+</body>
+</html>
