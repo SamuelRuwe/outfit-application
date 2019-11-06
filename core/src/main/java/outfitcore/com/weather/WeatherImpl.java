@@ -13,10 +13,12 @@ public class WeatherImpl implements Weather {
     // == fields ==
     @Getter
     @Setter
+    @CurrentTemp
     private int currentTemp;
 
     @Getter
     @Setter
+    @IsRaining
     private boolean isRaining;
 
     // == constructors ==
