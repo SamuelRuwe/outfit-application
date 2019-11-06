@@ -22,7 +22,7 @@
         <tbody>
         <tr th:each="person : ${listPersons}">
             <td th:text="${person.id}">Person ID</td>
-            <td th:text="${person.userName}">Username</td>
+            <td th:text="${person.username}">Username</td>
             <td th:text="${person.password}">Password</td>
             <td>
                 <a th:href="@{'/edit/' + ${person.id}}">Edit</a>
