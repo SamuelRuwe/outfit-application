@@ -1,5 +1,6 @@
 package ruwe.samruwe.service;
 
+import lombok.extern.slf4j.Slf4j;
 import outfitcore.com.domain.Hat;
 import outfitcore.com.domain.Person;
 import outfitcore.com.message.MessageGenerator;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @Service
 public class DataServiceImpl implements DataService {
 

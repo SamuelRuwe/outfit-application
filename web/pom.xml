@@ -67,9 +67,9 @@
         </dependency>
 
         <dependency>
-        <groupId>outfit-application</groupId>
-        <artifactId>core</artifactId>
-        <version>${project.version}</version>
+            <groupId>outfit-application</groupId>
+            <artifactId>core</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
     </dependencies>
