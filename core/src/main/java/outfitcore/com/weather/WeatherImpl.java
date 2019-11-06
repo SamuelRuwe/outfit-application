@@ -3,10 +3,14 @@ package outfitcore.com.weather;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
-@Component
-//@ConfigurationProperties("weather")
+@Configuration
+@ComponentScan
+@PropertySource("classpath:config/game.properties")
 @Slf4j
 public class WeatherImpl implements Weather {
 
@@ -20,16 +24,9 @@ public class WeatherImpl implements Weather {
     private boolean isRaining;
 
     // == constructors ==
-
-    public WeatherImpl() {
-        isRaining = true;
-        currentTemp = 50;
+    @Autowired
+    public WeatherImpl(@CurrentTemp int currentTemp, @IsRaining boolean isRaining) {
+        this.currentTemp = currentTemp;
+        this.isRaining = isRaining;
     }
 }
-
-//    @Autowired
-//    public WeatherImpl(@CurrentTemp int currentTemp, @IsRaining boolean isRaining) {
-//        this.currentTemp = currentTemp;
-//        this.isRaining = isRaining;
-//    }
-//}

@@ -6,7 +6,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import outfitcore.com.weather.WeatherImpl;
+import outfitcore.com.weather.CurrentTemp;
+import outfitcore.com.weather.IsRaining;
 
 @Configuration
 @ComponentScan(basePackages = "outfitcore.com")
@@ -23,7 +24,14 @@ public class WeatherConfig {
 
     // == bean methods ==
     @Bean
-    public WeatherImpl weatherImpl() {
-        return new WeatherImpl();
+    @CurrentTemp
+    private int getCurrentTemp() {
+        return currentTemp;
+    }
+
+    @Bean
+    @IsRaining
+    private boolean isRaining() {
+        return isRaining;
     }
 }
