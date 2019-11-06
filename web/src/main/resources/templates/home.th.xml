@@ -2,5 +2,5 @@
     <attr sel="#link"
           th:href="@{/home.css}"/>
     <attr sel="#homeMessage"
-          th:text="${T(com.ruwe.samruwe.util.testMessages).TEST_HOME_MESSAGE}"/>
+          th:text="${T(com.outfit.util.testMessages).TEST_HOME_MESSAGE}"/>
 </thLogic>
