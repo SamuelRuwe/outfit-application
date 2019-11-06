@@ -7,50 +7,67 @@ import javax.persistence.*;
 public class Hat {
 
     // == fields ==
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idHat;
-    private int idPerson;
-//    @Column(name = "formal", nullable = false)
-//    @Type(type = "org.hibernate.type.NumericBooleanType")
-//    potential way to use a boolean from an int. Will test later. Going to use com.outfit.config class for now. 11/5/2019
-
-    private int formal;
-    private String color;
-    private int minTemp;
-    private int maxTemp;
-//    @Column(name = "clean", nullable = false)
-//    @Type(type = "org.hibernate.type.NumericBooleanType")
+    private int hatid;
+    private int ownerid;
+    private int mintemp;
+    private int maxtemp;
     private int clean;
-    private int lastWorn;
+    private int lastworn;
+    private String color;
 
     // constructors ==
 
-    public Hat() {}
-
-    public int getIdHat() {
-        return idHat;
+    public Hat() {
     }
 
-    public void setIdHat(int idHat) {
-        this.idHat = idHat;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public int getHatid() {
+        return hatid;
     }
 
-    public int getIdPerson() {
-        return idPerson;
+    public void setHatid(int hatid) {
+        this.hatid = hatid;
     }
 
-    public void setIdPerson(int idPerson) {
-        this.idPerson = idPerson;
+    public int getOwnerid() {
+        return ownerid;
     }
 
-    public int isFormal() {
-        return formal;
+    public void setOwnerid(int ownerid) {
+        this.ownerid = ownerid;
     }
 
-    public void setFormal(int formal) {
-        this.formal = formal;
+    public int getMintemp() {
+        return mintemp;
+    }
+
+    public void setMintemp(int mintemp) {
+        this.mintemp = mintemp;
+    }
+
+    public int getMaxtemp() {
+        return maxtemp;
+    }
+
+    public void setMaxtemp(int maxtemp) {
+        this.maxtemp = maxtemp;
+    }
+
+    public int getClean() {
+        return clean;
+    }
+
+    public void setClean(int clean) {
+        this.clean = clean;
+    }
+
+    public int getLastworn() {
+        return lastworn;
+    }
+
+    public void setLastworn(int lastworn) {
+        this.lastworn = lastworn;
     }
 
     public String getColor() {
@@ -59,41 +76,5 @@ public class Hat {
 
     public void setColor(String color) {
         this.color = color;
-    }
-
-    public int getMinTemp() {
-        return minTemp;
-    }
-
-    public void setMinTemp(int minTemp) {
-        this.minTemp = minTemp;
-    }
-
-    public int getMaxTemp() {
-        return maxTemp;
-    }
-
-    public void setMaxTemp(int maxTemp) {
-        this.maxTemp = maxTemp;
-    }
-
-    public int isClean() {
-        return clean;
-    }
-
-    public void setClean(int clean) {
-        this.clean = clean;
-    }
-
-    public int getLastWorn() {
-        return lastWorn;
-    }
-
-    public void setLastWorn(int lastWorn) {
-        this.lastWorn = lastWorn;
-    }
-
-    public boolean checkBoolean(int i) {
-        return i == 1;
     }
 }
