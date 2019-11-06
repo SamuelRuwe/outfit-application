@@ -1,8 +1,7 @@
 package com.outfit.controllers;
 
 import com.outfit.domain.Hat;
-import com.outfit.service.DataService;
-import com.outfit.service.HatService;
+import com.outfit.service.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,36 +15,34 @@ import java.util.List;
 public class WebController {
 
     // == fields ==
-    private DataService dataService;
-    private HatService hatService;
 
-    // == constructor ==
+    private DataService dataService;
+    private PersonService personService;
+    private PantsService pantsService;
+    private ShirtService shirtService;
+    private HatService hatService;
+    private JacketService jacketService;
+
+    // == constructors ==
+
     @Autowired
-    public WebController(DataService dataService, HatService hatService) {
+    public WebController(DataService dataService, PersonService personService, PantsService pantsService, ShirtService shirtService, HatService hatService, JacketService jacketService) {
         this.dataService = dataService;
+        this.personService = personService;
+        this.pantsService = pantsService;
+        this.shirtService = shirtService;
         this.hatService = hatService;
+        this.jacketService = jacketService;
     }
 
     // == request methods ==
 
-//    @RequestMapping("/")
-//    public String viewHomePage() {
-//        log.info("Current temperature is {}", dataService.currentTemp());
-//        return "home";
-//    }
+    @RequestMapping("/")
+    public String viewHomePage() {
+        log.info("Current temperature is {}", dataService.currentTemp());
+        return "home";
+    }
 
-    // == person data testing ==
-
-
-//    @RequestMapping("/")
-//    public String viewHomePage(Model model) {
-//        List<Person> listPersons = dataService.listAllPeople();
-//        model.addAttribute("listPersons", listPersons);
-//        return "index";
-//    }
-
-
-    // == hat data testing ==
     @RequestMapping("/")
     public String viewHomePage(Model model) {
         List<Hat> listHats = hatService.listAll();
@@ -53,12 +50,4 @@ public class WebController {
         return "hatTest";
     }
 
-//    @RequestMapping("/edit/{id}")
-//    public ModelAndView showEditProductForm(@PathVariable(name = "id") int id) {
-//        ModelAndView mav = new ModelAndView("edit_product");
-//
-//        Person person = dataService.getPerson(id);
-//        mav.addObject("person", person);
-//        return mav;
-//    }
 }

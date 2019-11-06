@@ -1,4 +1,4 @@
-package com.outfit.weather.config;
+package com.outfit.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -36,3 +36,5 @@ public class WeatherConfig {
     }
 
 }
+
+// moved from a config package in weather if this breaks 11/6/2019
