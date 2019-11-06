@@ -27,4 +27,8 @@ public class HatService {
     public void delete(int id) {
         repo.deleteById(id);
     }
+
+    public List<String> getOwnersHats(int id) {
+        return repo.getOwnersHats(id);
+    }
 }

@@ -27,4 +27,8 @@ public class PantsService {
     public void delete(int id) {
         repo.deleteById(id);
     }
+
+    public List<String> getOwnersPants(int id) {
+        return repo.getOwnersPants(id);
+    }
 }

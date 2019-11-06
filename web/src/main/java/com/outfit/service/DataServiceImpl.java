@@ -1,5 +1,7 @@
 package com.outfit.service;
 
+import com.outfit.domain.Hat;
+import com.outfit.domain.Person;
 import com.outfit.message.MessageGenerator;
 import com.outfit.weather.Weather;
 import lombok.extern.slf4j.Slf4j;
@@ -7,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -21,7 +24,6 @@ public class DataServiceImpl implements DataService {
     private JacketService jacketService;
     private Weather weather;
     private MessageGenerator messageGenerator;
-
 
     // == constructors ==
 
@@ -55,5 +57,15 @@ public class DataServiceImpl implements DataService {
     @Override
     public String bringUmbrella() {
         return messageGenerator.Raining(weather.isRaining());
+    }
+
+    @Override
+    public List<Person> listPersons() {
+        return personService.listAll();
+    }
+
+    @Override
+    public List<Hat> listHats() {
+        return hatService.listAll();
     }
 }

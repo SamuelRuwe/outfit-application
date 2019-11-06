@@ -27,4 +27,8 @@ public class JacketService {
     public void delete(int id) {
         repo.deleteById(id);
     }
+
+    public List<String> getOwnersJacket(int id) {
+        return repo.getOwnersJacket(id);
+    }
 }
