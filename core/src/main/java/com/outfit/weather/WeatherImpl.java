@@ -27,4 +27,7 @@ public class WeatherImpl implements Weather {
         this.currentTemp = currentTemp;
         this.isRaining = isRaining;
     }
+
+    // == public methods ==
+
 }

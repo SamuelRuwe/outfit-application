@@ -2,7 +2,5 @@ package com.outfit.message;
 
 public interface MessageGenerator {
 
-    String getMainMessage();
-
-    String getResultMessage();
+    String Raining(boolean rain);
 }

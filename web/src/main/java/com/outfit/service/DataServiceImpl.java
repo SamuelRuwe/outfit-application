@@ -1,89 +1,59 @@
 package com.outfit.service;
 
-import com.outfit.domain.Hat;
-import com.outfit.domain.Person;
 import com.outfit.message.MessageGenerator;
 import com.outfit.weather.Weather;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.annotation.PostConstruct;
 
 @Slf4j
 @Service
 public class DataServiceImpl implements DataService {
 
     // == fields ==
+
+    private PersonService personService;
+    private PantsService pantsService;
+    private ShirtService shirtService;
+    private HatService hatService;
+    private JacketService jacketService;
     private Weather weather;
     private MessageGenerator messageGenerator;
-    private PersonService personService;
-    private HatService hatService;
+
 
     // == constructors ==
+
     @Autowired
-    public DataServiceImpl(Weather weather, MessageGenerator messageGenerator, PersonService personService, HatService hatService) {
+    public DataServiceImpl(PersonService personService, PantsService pantsService, ShirtService shirtService, HatService hatService, JacketService jacketService, Weather weather,
+                           MessageGenerator messageGenerator) {
+        this.personService = personService;
+        this.pantsService = pantsService;
+        this.shirtService = shirtService;
+        this.hatService = hatService;
+        this.jacketService = jacketService;
         this.weather = weather;
         this.messageGenerator = messageGenerator;
-        this.personService = personService;
-        this.hatService = hatService;
     }
+
     // == init ==
 
+    @PostConstruct
+    public void init() {
+        log.info("Weather currentTemp = {}", weather.getCurrentTemp(),
+                "Weather isRaining = {}", weather.isRaining());
+    }
 
     // == public methods ==
+
     @Override
-    public int currentTemp() {
-        return weather.getCurrentTemp();
+    public void inTempRange() {
+
     }
 
     @Override
-    public boolean isRaining() {
-        return weather.isRaining();
-    }
-
-    @Override
-    public List<Person> listAllPeople() {
-        List<Person> list = new ArrayList<Person>();
-        list = personService.listAll();
-        return list;
-    }
-
-    @Override
-    public void save(Person person) {
-        personService.save(person);
-    }
-
-    @Override
-    public Person getPerson(int id) {
-        return personService.get(id);
-    }
-
-    @Override
-    public void deletePerson(int id) {
-        personService.delete(id);
-    }
-
-    @Override
-    public List<Hat> listAllHat() {
-        ArrayList<Hat> list = new ArrayList<Hat>();
-        list = (ArrayList)hatService.listAll();
-        return list;
-    }
-
-    @Override
-    public void save(Hat hat) {
-        hatService.save(hat);
-    }
-
-    @Override
-    public Hat getHat(int id) {
-        return hatService.get(id);
-    }
-
-    @Override
-    public void deleteHat(int id) {
-        hatService.delete(id);
+    public String bringUmbrella() {
+        return messageGenerator.Raining(weather.isRaining());
     }
 }
