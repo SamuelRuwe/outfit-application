@@ -51,23 +51,30 @@ public class ConsoleOutfit {
     @EventListener(ContextRefreshedEvent.class)
     public void start() {
         log.info("start() --> Container ready for use.");
-        hatService.getOwnersHats(1);
-        List<String> list = hatService.getOwnersHats(1);
-        for(String hat : list) {
-            log.info("Hat color = {}", hat);
+        List<Object[]> list = shirtService.getShirtDetails(1);
+        for(Object item[] : list) {
+            for(int i = 0; i < 2; i++) {
+                log.info("Object detail = {}", item[i]);
+            }
+
         }
-        list = pantsService.getOwnersPants(2);
-        for(String clothing : list) {
-            log.info("Pants color = {}", clothing);
-        }
-        list = jacketService.getOwnersJacket(3);
-        for(String clothing : list) {
-            log.info("Jacket color = {}", clothing);
-        }
-        list = shirtService.getOwnersShirt(1);
-        for(String clothing : list) {
-            log.info("Shirt color = {}", clothing);
-        }
+//        hatService.getOwnersHats(1);
+//        List<String> list = hatService.getOwnersHats(1);
+//        for(String hat : list) {
+//            log.info("Hat color = {}", hat);
+//        }
+//        list = pantsService.getOwnersPants(2);
+//        for(String clothing : list) {
+//            log.info("Pants color = {}", clothing);
+//        }
+//        list = jacketService.getOwnersJacket(3);
+//        for(String clothing : list) {
+//            log.info("Jacket color = {}", clothing);
+//        }
+//        list = shirtService.getOwnersShirt(1);
+//        for(String clothing : list) {
+//            log.info("Shirt color = {}", clothing);
+//        }
         Scanner scanner = new Scanner(System.in);
 
         while(true) {

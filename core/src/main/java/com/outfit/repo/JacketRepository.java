@@ -12,4 +12,8 @@ public interface JacketRepository extends JpaRepository<Jacket, Integer> {
             nativeQuery = true)
     public List<String> getOwnersJacket(int id);
 
+    @Query(value = "SELECT username AS username, color AS color FROM Person JOIN Jacket WHERE Person.id = Jacket.ownerid AND Person.id = ?1 AND Jacket.clean = 1",
+            nativeQuery = true)
+    public List<Object[]> getJacketDetails(int id);
+
 }

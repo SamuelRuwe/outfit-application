@@ -31,4 +31,8 @@ public class HatService {
     public List<String> getOwnersHats(int id) {
         return repo.getOwnersHats(id);
     }
+
+    public List<Object[]> getHatDetails(int id) {
+        return repo.getHatDetails(id);
+    }
 }

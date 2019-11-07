@@ -31,4 +31,8 @@ public class JacketService {
     public List<String> getOwnersJacket(int id) {
         return repo.getOwnersJacket(id);
     }
+
+    public List<Object[]> getJacketDetails(int id) {
+        return repo.getJacketDetails(id);
+    }
 }

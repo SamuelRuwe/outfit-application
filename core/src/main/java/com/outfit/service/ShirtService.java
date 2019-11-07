@@ -31,4 +31,8 @@ public class ShirtService {
     public List<String> getOwnersShirt(int id) {
         return repo.getOwnersShirt(id);
     }
+
+    public List<Object[]> getShirtDetails(int id) {
+        return repo.getShirtDetails(id);
+    }
 }

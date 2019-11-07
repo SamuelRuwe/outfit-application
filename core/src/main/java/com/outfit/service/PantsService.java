@@ -31,4 +31,8 @@ public class PantsService {
     public List<String> getOwnersPants(int id) {
         return repo.getOwnersPants(id);
     }
+
+    public List<Object[]> getPantsDetails(int id) {
+        return repo.getPantsDetails(id);
+    }
 }
