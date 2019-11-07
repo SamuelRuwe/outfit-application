@@ -1,14 +1,13 @@
 package com.outfit.controllers;
 
-import com.outfit.domain.Hat;
 import com.outfit.service.DataService;
+import com.outfit.util.OutfitAppMappings;
+import com.outfit.util.ViewNames;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
 
 @Controller
 @Slf4j
@@ -17,31 +16,6 @@ public class WebController {
     // == fields ==
 
     private DataService dataService;
-//    private PersonService personService;
-//    private PantsService pantsService;
-//    private ShirtService shirtService;
-//    private HatService hatService;
-//    private JacketService jacketService;
-
-    // == constructors ==
-
-//    @Autowired
-//    public WebController(DataService dataService, PersonService personService, PantsService pantsService, ShirtService shirtService, HatService hatService, JacketService jacketService) {
-//        this.dataService = dataService;
-//        this.personService = personService;
-//        this.pantsService = pantsService;
-//        this.shirtService = shirtService;
-//        this.hatService = hatService;
-//        this.jacketService = jacketService;
-//    }
-
-    // == request methods ==
-
-//    @RequestMapping("/")
-//    public String viewHomePage() {
-//        log.info("Current temperature is {}", dataService.currentTemp());
-//        return "home";
-//    }
 
     // == constructors ==
 
@@ -50,19 +24,17 @@ public class WebController {
         this.dataService = dataService;
     }
 
-    @RequestMapping("/")
-    public String viewHomePage(Model model) {
-        List<Hat> listHats = dataService.listHats();
-        model.addAttribute("listHats", listHats);
-        return "Index";
+    // == request methods ==
+
+    @RequestMapping(OutfitAppMappings.HOME)
+    public String viewHomePage() {
+        return ViewNames.HOME;
     }
 
 
-//    @RequestMapping("/")
-//    public String viewHomePage(Model model) {
-//        List<Hat> listHats = hatService.listAll();
-//        model.addAttribute("listHats", listHats);
-//        return "hatTest";
-//    }
+    @RequestMapping(OutfitAppMappings.VIEW_WARDROBE)
+    public String viewHomePage(Model model) {
 
+       return ViewNames.VIEW_WARDROBE;
+    }
 }
