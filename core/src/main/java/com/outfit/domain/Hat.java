@@ -1,10 +1,11 @@
 package com.outfit.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "hat")
-public class Hat {
+public class Hat implements Serializable {
 
     // == fields ==
     private int hatid;

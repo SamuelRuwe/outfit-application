@@ -11,16 +11,12 @@
     <table border="1" cellpadding="10">
         <thead>
             <tr>
-                <th>Product ID</th>
-                <th>Name</th>
-                <th>Brand</th>
-                <th>Made in</th>
-                <th>Price</th>
-                <th>Actions</th>
+                <th>Username</th>
+                <th>Pants Color</th>
             </tr>
         </thead>
         <tbody>
-        <tr th:each="person : ${listPersons}">
+        <tr th:each="person : ${list}">
             <td th:text="${person.id}">Person ID</td>
             <td th:text="${person.username}">Username</td>
             <td th:text="${person.password}">Password</td>

@@ -20,6 +20,10 @@ public class Pants {
     public Pants() {
     }
 
+    public Pants(int ownerid) {
+        this.ownerid = ownerid;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getPantsid() {

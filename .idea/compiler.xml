@@ -7,9 +7,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="console" />
-        <module name="web" />
         <module name="core" />
+        <module name="web" />
+        <module name="console" />
       </profile>
     </annotationProcessing>
   </component>

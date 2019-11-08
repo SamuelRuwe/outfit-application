@@ -1,5 +1,6 @@
 package com.outfit;
 
+import com.outfit.domain.Pants;
 import com.outfit.service.*;
 import com.outfit.weather.Weather;
 import lombok.extern.slf4j.Slf4j;
@@ -51,10 +52,16 @@ public class ConsoleOutfit {
     @EventListener(ContextRefreshedEvent.class)
     public void start() {
         log.info("start() --> Container ready for use.");
+        List<Pants> pantsList = pantsService.getPantsDetails(1);
+        for(Pants pants : pantsList) {
+            log.info("Color = {}", pants.getColor());
+        }
+
         List<Object[]> list = shirtService.getShirtDetails(1);
         for(Object item[] : list) {
             for(int i = 0; i < 2; i++) {
                 log.info("Object detail = {}", item[i]);
+                String s = "Username = " + item[i];
             }
 
         }

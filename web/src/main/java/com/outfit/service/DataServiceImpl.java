@@ -1,6 +1,7 @@
 package com.outfit.service;
 
 import com.outfit.domain.Hat;
+import com.outfit.domain.Pants;
 import com.outfit.domain.Person;
 import com.outfit.message.MessageGenerator;
 import com.outfit.weather.Weather;
@@ -67,5 +68,15 @@ public class DataServiceImpl implements DataService {
     @Override
     public List<Hat> listHats() {
         return hatService.listAll();
+    }
+
+    @Override
+    public List<Pants> listPants(int id) {
+        return pantsService.getPantsDetails(id);
+    }
+
+    @Override
+    public void savePants(Pants pants) {
+        pantsService.save(pants);
     }
 }

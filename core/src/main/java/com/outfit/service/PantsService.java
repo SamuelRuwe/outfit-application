@@ -32,7 +32,7 @@ public class PantsService {
         return repo.getOwnersPants(id);
     }
 
-    public List<Object[]> getPantsDetails(int id) {
+    public List<Pants> getPantsDetails(int id) {
         return repo.getPantsDetails(id);
     }
 }
