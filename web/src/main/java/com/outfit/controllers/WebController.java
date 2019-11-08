@@ -53,8 +53,8 @@ public class WebController {
 
     @RequestMapping("/listPants/{id}")
     public String listPants(@PathVariable(name = "id") int id, Model model) {
-        Pants pants = new Pants(id);
-        model.addAttribute("pants", pants);
+        List<Pants> listPants = dataService.listPants(id);
+        model.addAttribute("listPants", listPants);
         return "listPants";
     }
 

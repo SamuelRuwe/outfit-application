@@ -14,6 +14,7 @@
             <th>Last Worn</th>
             <th>Min Temp</th>
             <th>Max Temp</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -23,9 +24,9 @@
             <td th:text="${pants.mintemp}">minTemp</td>
             <td th:text="${pants.maxtemp}">maxTemp</td>
             <td>
-                <a th:href="@{'/editPants/' + ${pants.id}}">Edit</a>
+                <a th:href="@{'/editPants/' + ${pants.pantsid}}">Edit</a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/delete/' + ${pants.id}}">Remove</a>
+                <a th:href="@{'/delete/' + ${pants.pantsid}}">Remove</a>
             </td>
         </tr>
         </tbody>
