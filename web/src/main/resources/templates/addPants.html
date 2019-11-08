@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Generic Title</title>
+        <meta charset="UTF-8">
+        <link id="link" type="text/css" rel="stylesheet" />
+
+    </head>
+    <body>
+        <div class="main">
+            <h2 class="header" align="center">Pants Page
+                <br/><span style="font-weight: normal" class="txt_small">(And some extra details maybe)</span>
+            </h2>
+
+            <form th:action="@{/save-pants}" th:object="${pants}">
+                <table border="1" width="90%" align="center" cellpadding="5">
+                    <tr>
+                        <td class="fheading" colspan="4">Clothing Form</td>
+                    </tr>
+
+                    <tr>
+                        <td>Color</td>
+                        <td><input type="text" th:field="${pants.color}" /></td>
+                        <td>LastWorn</td>
+                        <td><input type="text" th:field="${pants.lastworn}" /></td>
+                    </tr>
+
+                    <tr>
+                        <td>MinTemp</td>
+                        <td><input type="text" th:field="${pants.mintemp}" /></td>
+                        <td>MaxTemp</td>
+                        <td><input type="text" th:field="${pants.maxtemp}" /></td>
+                    </tr>
+
+                    <td>ID</td>
+                    <td><input type="text" th:field="${pants.ownerid}" readonly="readonly"/></td>
+                    <tr>                    
+                        <td colspan="4" align="center">
+                            <button id="id_btn_save">Save</button>
+                        </td>                                        
+                    </tr>
+
+                </table>
+            </form>
+
+        </div>
+    </body>
+</html>
