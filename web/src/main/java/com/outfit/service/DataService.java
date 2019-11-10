@@ -19,4 +19,6 @@ public interface DataService {
     List<Pants> listPants(int id);
 
     void savePants(Pants pants);
+
+    Pants getPants(int id);
 }

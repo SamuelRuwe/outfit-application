@@ -1,7 +1,8 @@
 package com.outfit;
 
-import com.outfit.domain.Pants;
+import com.outfit.domain.TestSecondDbDomain.Clothes;
 import com.outfit.service.*;
+import com.outfit.service.TestSecondDbService.CommonService;
 import com.outfit.weather.Weather;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,50 +39,36 @@ public class ConsoleOutfit {
     @Autowired
     private JacketService jacketService;
 
+    @Autowired
+    private CommonService commonService;
+
     public ConsoleOutfit(Weather weather, PersonService service, HatService hatService, PantsService pantsService,
-                         ShirtService shirtService, JacketService jacketService) {
+                         ShirtService shirtService, JacketService jacketService, CommonService commonService) {
         this.weather = weather;
         this.service = service;
         this.hatService = hatService;
         this.pantsService = pantsService;
         this.shirtService = shirtService;
         this.jacketService = jacketService;
+        this.commonService = commonService;
     }
 
     // == events ==
     @EventListener(ContextRefreshedEvent.class)
     public void start() {
         log.info("start() --> Container ready for use.");
-        List<Pants> pantsList = pantsService.getPantsDetails(1);
-        for(Pants pants : pantsList) {
-            log.info("Color = {}", pants.getColor());
+        List<Clothes> clothesList = commonService.listPersonsClothes(1);
+        for(Clothes temp : clothesList) {
+            log.info("Type = {}", temp.getType());
         }
 
-        List<Object[]> list = shirtService.getShirtDetails(1);
-        for(Object item[] : list) {
-            for(int i = 0; i < 2; i++) {
-                log.info("Object detail = {}", item[i]);
-                String s = "Username = " + item[i];
-            }
+//        List<Object[]> list = shirtService.getShirtDetails(1);
+//        for(Object item[] : list) {
+//            for(int i = 0; i < 2; i++) {
+//                log.info("Object detail = {}", item[i]);
+//                String s = "Username = " + item[i];
+//            }
 
-        }
-//        hatService.getOwnersHats(1);
-//        List<String> list = hatService.getOwnersHats(1);
-//        for(String hat : list) {
-//            log.info("Hat color = {}", hat);
-//        }
-//        list = pantsService.getOwnersPants(2);
-//        for(String clothing : list) {
-//            log.info("Pants color = {}", clothing);
-//        }
-//        list = jacketService.getOwnersJacket(3);
-//        for(String clothing : list) {
-//            log.info("Jacket color = {}", clothing);
-//        }
-//        list = shirtService.getOwnersShirt(1);
-//        for(String clothing : list) {
-//            log.info("Shirt color = {}", clothing);
-//        }
         Scanner scanner = new Scanner(System.in);
 
         while(true) {

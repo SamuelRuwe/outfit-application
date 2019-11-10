@@ -79,4 +79,9 @@ public class DataServiceImpl implements DataService {
     public void savePants(Pants pants) {
         pantsService.save(pants);
     }
+
+    @Override
+    public Pants getPants(int id) {
+        return pantsService.get(id);
+    }
 }

@@ -9,22 +9,34 @@
     <h1 id="homeMessage">Test Home Page 11/8/2019</h1>
     <table border="1" cellpadding="10">
         <thead>
+
+        private int id;
+        private String username;
+        private String password;
+        private String firstname;
+        private String lastname;
+        private String email;
+
         <tr>
-            <th>Person ID</th>
+            <th>ID</th>
             <th>Username</th>
-            <th>Password</th>
-            <th>Actions</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="person : ${listPersons}">
+        <tr th:each="person : ${list}">
             <td th:text="${person.id}">ID</td>
             <td th:text="${person.username}">Username</td>
             <td th:text="${person.password}">Password</td>
+            <td th:text="${person.firstname}">Password</td>
+            <td th:text="${person.lastname}">Password</td>
+            <td th:text="${person.email}">Password</td>
             <td>
                 <a th:href="@{'/addPants/' + ${person.id}}">Add</a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/listPants/' + ${person.id}}">List</a>
+                <a th:href="@{'/listClothes/' + ${person.id}}">List</a>
             </td>
         </tr>
         </tbody>
