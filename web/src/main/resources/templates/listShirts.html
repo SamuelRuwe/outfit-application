@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <link id="link" type="text/css" rel="stylesheet" />
+</head>
+<body>
+    <h1 id="homeMessage">Test Home Page 11/8/2019</h1>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>Color</th>
+            <th>Last Worn</th>
+            <th>Min Temp</th>
+            <th>Max Temp</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="object : ${list}">
+            <td th:text="${object.color}">Color</td>
+            <td th:text="${object.lastworn}">Lastworn</td>
+            <td th:text="${object.mintemp}">minTemp</td>
+            <td th:text="${object.maxtemp}">maxTemp</td>
+            <td>
+                <a th:href="@{'/editPants/' + ${pants.pantsid}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/delete/' + ${pants.pantsid}}">Remove</a>
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+
+</body>
+</html>

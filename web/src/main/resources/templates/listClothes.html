@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <link id="link" type="text/css" rel="stylesheet" />
+</head>
+<body>
+    <h1 id="homeMessage">Test Home Page 11/8/2019</h1>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Owner ID</th>
+            <th>Type</th>
+            <th>Color</th>
+            <th>Formal</th>
+            <th>Min Temp</th>
+            <th>Max Temp</th>
+            <th>Last Worn</th>
+            <th>Clean</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="clothes : ${list}">
+            <td th:text="${clothes.id}">ID</td>
+            <td th:text="${clothes.ownerid}">Owner ID</td>
+            <td th:text="${clothes.type}">Type</td>
+            <td th:text="${clothes.color}">Color</td>
+            <td th:text="${clothes.formal}">Formal</td>
+            <td th:text="${clothes.mintemp}">Min Temp</td>
+            <td th:text="${clothes.maxtemp}">Max Temp</td>
+            <td th:text="${clothes.lastworn}">Last Worn</td>
+            <td th:text="${clothes.clean}">Clean</td>
+        </tr>
+        </tbody>
+
+    </table>
+
+
+
+</body>
+</html>
