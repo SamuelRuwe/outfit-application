@@ -1,7 +1,13 @@
 package com.outfit;
 
+import com.outfit.weather.WeatherApiConnection;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
+
+import java.util.Map;
 
 @Slf4j
 @Component
@@ -69,4 +75,24 @@ public class ConsoleOutfit {
 //
 //        }
 //    }
+
+    @Autowired
+    private WeatherApiConnection weatherApiConnection;
+
+
+//    public ConsoleOutfit(WeatherApiConnection weatherApiConnection) {
+//        this.weatherApiConnection = new WeatherApiConnection("27502", "US");
+//    }
+
+    @EventListener(ContextRefreshedEvent.class)
+    public void start() {
+        log.info("start() --> Container ready for use.");
+            Map<String, Object> map = weatherApiConnection.getMaps(27502, "US");
+        for (Map.Entry<String,Object> entry : map.entrySet())
+            System.out.println("Key = " + entry.getKey() +
+                    ", Value = " + entry.getValue());
+        log.info("Min_temp = {}", map.get("temp_min"));
+        log.info("Max_temp = {}", map.get("temp_max"));
+    }
+
 }
