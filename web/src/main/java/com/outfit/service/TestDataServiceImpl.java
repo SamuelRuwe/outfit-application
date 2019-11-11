@@ -1,8 +1,7 @@
 package com.outfit.service;
 
-import com.outfit.domain.TestSecondDbDomain.Clothes;
-import com.outfit.domain.TestSecondDbDomain.Persons;
-import com.outfit.service.TestSecondDbService.CommonService;
+import com.outfit.domain.Clothes;
+import com.outfit.domain.Persons;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

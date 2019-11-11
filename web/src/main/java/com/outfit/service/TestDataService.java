@@ -1,7 +1,7 @@
 package com.outfit.service;
 
-import com.outfit.domain.TestSecondDbDomain.Clothes;
-import com.outfit.domain.TestSecondDbDomain.Persons;
+import com.outfit.domain.Clothes;
+import com.outfit.domain.Persons;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.outfit.controllers;
 
-import com.outfit.domain.TestSecondDbDomain.Clothes;
-import com.outfit.domain.TestSecondDbDomain.Persons;
+import com.outfit.domain.Clothes;
+import com.outfit.domain.Persons;
 import com.outfit.service.TestDataService;
 import com.outfit.util.OutfitAppMappings;
 import com.outfit.util.ViewNames;
