@@ -19,27 +19,27 @@ public class Controller {
 
     // == fields ==
 
-    private DataService testDataService;
+    private DataService dataService;
 
     // == constructors ==
 
     @Autowired
-    public Controller(DataService testDataService) {
-        this.testDataService = testDataService;
+    public Controller(DataService dataService) {
+        this.dataService = dataService;
     }
 
     // == request methods ==
 
     @RequestMapping(OutfitAppMappings.HOME)
     public String viewHomePage(Model model) {
-        List<Persons> list = testDataService.listPersons();
+        List<Persons> list = dataService.listPersons();
         model.addAttribute("list", list);
         return ViewNames.HOME;
     }
 
     @RequestMapping("/listClothes/{id}")
     public String listClothes(@PathVariable(name = "id") int id, Model model) {
-        List<Clothes> list = testDataService.listClothes(id);
+        List<Clothes> list = dataService.listClothes(id);
         model.addAttribute("list", list);
         return "listClothes";
     }

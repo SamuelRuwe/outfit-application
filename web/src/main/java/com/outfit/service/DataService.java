@@ -11,5 +11,5 @@ public interface DataService {
 
     List<Clothes> listClothes(int id);
 
-    List<Clothes> weatherAppropriateClothes(int id, int zipCode, String countryCode);
+    List<Clothes> listClothesInTempRange(int id);
 }
