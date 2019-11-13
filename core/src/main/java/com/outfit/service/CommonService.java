@@ -2,6 +2,7 @@ package com.outfit.service;
 
 import com.outfit.domain.Clothes;
 import com.outfit.domain.Persons;
+import com.outfit.dto.LoginDto;
 
 import java.util.List;
 
@@ -26,4 +27,6 @@ public interface CommonService {
     void deleteClothes(int id);
 
     List<Clothes> inTempRange(int id);
+
+    List<LoginDto> loginCheckList();
 }

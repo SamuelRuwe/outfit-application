@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Clothes</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div class="main">
+
+    <form th:action="@{/saveClothes}" th:object="${clothes}">
+        <table border="1" width="90%" align="center" cellpadding="5">
+            <tr>
+                <td class="fheading"  colspan="4">Clothes Form</td>
+            </tr>
+
+            <tr>
+                <td>Owner ID</td>
+                <td>
+                    <input type="text" th:field="*{ownerid}" readonly="readonly"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Type</td>
+                <td>
+                    <input type="text" th:field="*{type}"/>
+                </td>
+                <td>Color</td>
+                <td>
+                    <input type="text" th:field="*{color}" />
+                </td>
+            </tr>
+            <tr>
+                <td>Formal</td>
+                <td>
+                    <input type="text" th:field="*{formal}"/>
+                </td>
+                <td>Min Temp</td>
+                <td>
+                    <input type="text" th:field="*{mintemp}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Max Temp</td>
+                <td>
+                    <input type="text" th:field="*{maxtemp}"/>
+                </td>
+                <td>Last Worn</td>
+                <td>
+                    <input type="text" th:field="*{lastworn}"/>
+                </td>
+                <td>Clean</td>
+                <td>
+                    <input type="text" th:field="*{clean}"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" align="center">
+                    <button >Save</button>
+                </td>
+            </tr>
+
+        </table>
+    </form>
+</div>
+</body>
+</html>

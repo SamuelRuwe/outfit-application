@@ -2,6 +2,7 @@ package com.outfit.service;
 
 import com.outfit.domain.Clothes;
 import com.outfit.domain.Persons;
+import com.outfit.dto.LoginDto;
 import com.outfit.repo.ClothesRepository;
 import com.outfit.repo.PersonsRepository;
 import com.outfit.weather.Weather;
@@ -23,6 +24,8 @@ public class CommonServiceImpl implements CommonService {
     private ClothesRepository clothesRepository;
     @Autowired
     private Weather weather;
+    @Autowired
+    private LoginDto loginDto;
 
     // == public methods ==
 
@@ -103,5 +106,28 @@ public class CommonServiceImpl implements CommonService {
         }
         log.info("newList length = {}", newList.size());
         return newList;
+    }
+
+    @Override
+    public List<LoginDto> loginCheckList() {
+        List<LoginDto> listLogInDto = new ArrayList<>();
+        List<Persons> personsList = listPersons();
+        Persons tempPerson;
+        Iterator<Persons> it = personsList.iterator();
+        while(it.hasNext()) {
+            LoginDto tempLoginDto = new LoginDto();
+            tempPerson = it.next();
+            tempLoginDto.setId(tempPerson.getId());
+            tempLoginDto.setEmail(tempPerson.getEmail());
+            tempLoginDto.setPassword(tempPerson.getPassword());
+            listLogInDto.add(tempLoginDto);
+            log.info("logInCheckList adding {}", tempPerson.getFirstname());
+        }
+        Iterator<LoginDto> it2 = listLogInDto.iterator();
+        while(it.hasNext()) {
+            LoginDto temp = it2.next();
+            log.info("temp email = {}", temp.getEmail());
+        }
+        return listLogInDto;
     }
 }

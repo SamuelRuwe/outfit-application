@@ -2,17 +2,19 @@ package com.outfit.service;
 
 import com.outfit.domain.Clothes;
 import com.outfit.domain.Persons;
-import com.outfit.weather.WeatherApiConnection;
+import com.outfit.dto.LoginDto;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Iterator;
 import java.util.List;
 
 @Service
+@Slf4j
 public class DataServiceImpl implements DataService {
 
     private CommonService commonService;
-    private WeatherApiConnection weatherApiConnection;
 
     @Autowired
     public DataServiceImpl(CommonServiceImpl commonService) {
@@ -32,6 +34,31 @@ public class DataServiceImpl implements DataService {
     @Override
     public List<Clothes> listClothesInTempRange(int id) {
         return commonService.inTempRange(id);
+    }
+
+    @Override
+    public void saveClothes(Clothes clothes) {
+        commonService.saveClothes(clothes);
+    }
+
+    @Override
+    public Clothes getClothes(int id) {
+        return commonService.getClothes(id);
+    }
+
+    @Override
+    public void deleteClothes(int id) {
+        commonService.deleteClothes(id);
+    }
+
+    @Override
+    public List<LoginDto> getLoginList() {
+        Iterator<LoginDto> it = commonService.loginCheckList().iterator();
+        while(it.hasNext()) {
+            LoginDto temp = it.next();
+            log.info("temp email = {}", temp.getEmail());
+        }
+        return commonService.loginCheckList();
     }
 
     //    @Override
