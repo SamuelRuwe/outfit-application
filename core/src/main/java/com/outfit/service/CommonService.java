@@ -2,63 +2,28 @@ package com.outfit.service;
 
 import com.outfit.domain.Clothes;
 import com.outfit.domain.Persons;
-import com.outfit.repo.ClothesRepository;
-import com.outfit.repo.PersonsRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class CommonService {
+public interface CommonService {
 
-    // == fields ==
+    void savePersons(Persons persons);
 
-    @Autowired
-    private PersonsRepository personsRepository;
-    @Autowired
-    private ClothesRepository clothesRepository;
+    void saveClothes(Clothes clothes);
 
-    // == public methods ==
+    List<Persons> listPersons();
 
-    public void savePersons(Persons persons) {
-        personsRepository.save(persons);
-    }
+    List<Clothes> listClothes();
 
-    public void saveClothes(Clothes clothes) {
-        clothesRepository.save(clothes);
-    }
+    List<Clothes> listPersonsClothes(int id);
 
-    public List<Persons> listPersons() {
-        List list = personsRepository.findAll();
-        return list;
-    }
+    Persons getPersons(int id);
 
-    public List<Clothes> listClothes() {
-        List list = clothesRepository.findAll();
-        return list;
-    }
+    Clothes getClothes(int id);
 
-    public List<Clothes> listPersonsClothes(int id) {
-        List list = clothesRepository.getOwnedClothes(id);
-        return list;
-    }
-    public Persons getPersons(int id) {
-        Persons persons = personsRepository.findById(id).get();
-        return persons;
-    }
+    void deletePersons(int id);
 
-    public Clothes getClothes(int id) {
-        Clothes clothes = clothesRepository.findById(id).get();
-        return clothes;
-    }
+    void deleteClothes(int id);
 
-    public void deletePersons(int id) {
-        personsRepository.deleteById(id);
-    }
-
-    public void deleteClothes(int id) {
-        clothesRepository.deleteById(id);
-    }
-
+    List<Clothes> inTempRange(int id);
 }

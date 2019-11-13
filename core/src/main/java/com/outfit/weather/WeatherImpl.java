@@ -1,9 +1,13 @@
 package com.outfit.weather;
 
+import com.outfit.domain.Clothes;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 @Slf4j
@@ -21,6 +25,10 @@ public class WeatherImpl implements Weather {
     @Getter
     private boolean isRaining;
 
+    @Autowired
+    private WeatherApiConnection weatherApiConnection;
+
+
     // == constructors ==
     @Autowired
     public WeatherImpl(@CurrentTemp int currentTemp, @IsRaining boolean isRaining) {
@@ -30,4 +38,44 @@ public class WeatherImpl implements Weather {
 
     // == public methods ==
 
+    @Override
+    public boolean inTempRange(int temp_min, int temp_max, Clothes clothes) {
+        log.info("in inTempRange");
+        log.info("Clothes mintemp = {}", clothes.getMintemp());
+        log.info("temp_min = {}", temp_min);
+        log.info("Clothes maxtemp = {}", clothes.getMaxtemp());
+        log.info("temp_max = {}", temp_max);
+        if(clothes.getMintemp() < temp_min && clothes.getMaxtemp() > temp_max) {
+            log.info("return true");
+            return true;
+        }
+        log.info("return false");
+        return false;
+    }
+
+
+    // old method only here if I need it. Will be removed before release
+//    @Override
+//    public boolean inTempRange(int zipCode, String countryCode, Clothes clothes) {
+//        Map<String, Object> map = weatherApiConnection.getMaps(zipCode, countryCode);
+//        int minTemp = Integer.parseInt((String)(map.get("temp_min")));
+//        int maxTemp = Integer.parseInt((String)(map.get("temp_max"))) + 1; // add one due to truncation of value (79.9 -- > 79)
+//        if(clothes.getMintemp() < minTemp && clothes.getMaxtemp() < maxTemp) {
+//            return true;
+//        }
+//        return false;
+//    }
+
+
+
+    @Override
+    public Map<String, String> currentTemperature(int zipCode, String countryCode) {
+        log.info("Zipcode = {}", zipCode);
+        log.info("Countrycode = {}", countryCode);
+        Map<String, Object> map = weatherApiConnection.getMaps(zipCode, countryCode);
+        Map<String, String> newMap = new HashMap<>();
+        newMap.put("temp_min", map.get("temp_min").toString());
+        newMap.put("temp_max", map.get("temp_max").toString());
+        return newMap;
+    }
 }

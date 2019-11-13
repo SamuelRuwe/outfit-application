@@ -5,10 +5,11 @@ import com.outfit.domain.Persons;
 
 import java.util.List;
 
-public interface TestDataService {
+public interface DataService {
 
     List<Persons> listPersons();
 
     List<Clothes> listClothes(int id);
 
+    List<Clothes> weatherAppropriateClothes(int id, int zipCode, String countryCode);
 }

@@ -2,7 +2,7 @@ package com.outfit.controllers;
 
 import com.outfit.domain.Clothes;
 import com.outfit.domain.Persons;
-import com.outfit.service.TestDataService;
+import com.outfit.service.DataService;
 import com.outfit.util.OutfitAppMappings;
 import com.outfit.util.ViewNames;
 import lombok.extern.slf4j.Slf4j;
@@ -19,12 +19,12 @@ public class Controller {
 
     // == fields ==
 
-    private TestDataService testDataService;
+    private DataService testDataService;
 
     // == constructors ==
 
     @Autowired
-    public Controller(TestDataService testDataService) {
+    public Controller(DataService testDataService) {
         this.testDataService = testDataService;
     }
 

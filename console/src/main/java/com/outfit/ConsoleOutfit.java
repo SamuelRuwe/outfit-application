@@ -1,5 +1,7 @@
 package com.outfit;
 
+import com.outfit.domain.Clothes;
+import com.outfit.service.CommonService;
 import com.outfit.weather.WeatherApiConnection;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +9,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
-import java.util.Map;
+import java.util.List;
 
 @Slf4j
 @Component
@@ -36,10 +38,10 @@ public class ConsoleOutfit {
 //    private JacketService jacketService;
 //
 //    @Autowired
-//    private CommonService commonService;
+//    private CommonServiceImpl commonService;
 //
 //    public ConsoleOutfit(Weather weather, PersonService service, HatService hatService, PantsService pantsService,
-//                         ShirtService shirtService, JacketService jacketService, CommonService commonService) {
+//                         ShirtService shirtService, JacketService jacketService, CommonServiceImpl commonService) {
 //        this.weather = weather;
 //        this.service = service;
 //        this.hatService = hatService;
@@ -79,6 +81,9 @@ public class ConsoleOutfit {
     @Autowired
     private WeatherApiConnection weatherApiConnection;
 
+    @Autowired
+    CommonService commonService;
+
 
 //    public ConsoleOutfit(WeatherApiConnection weatherApiConnection) {
 //        this.weatherApiConnection = new WeatherApiConnection("27502", "US");
@@ -87,12 +92,20 @@ public class ConsoleOutfit {
     @EventListener(ContextRefreshedEvent.class)
     public void start() {
         log.info("start() --> Container ready for use.");
-            Map<String, Object> map = weatherApiConnection.getMaps(27502, "US");
-        for (Map.Entry<String,Object> entry : map.entrySet())
-            System.out.println("Key = " + entry.getKey() +
-                    ", Value = " + entry.getValue());
-        log.info("Min_temp = {}", map.get("temp_min"));
-        log.info("Max_temp = {}", map.get("temp_max"));
+//        Map<String, Object> map = weatherApiConnection.getMaps(27502, "US");
+//        System.out.println(map.get("temp_min"));
+        commonService.listPersons();
+        List<Clothes> list = commonService.inTempRange(1);
+        for(Clothes temp : list) {
+            log.info("Temp = {}", temp.getType());
+        }
+
+//            Map<String, Object> map = weatherApiConnection.getMaps(27502, "US");
+//        for (Map.Entry<String,Object> entry : map.entrySet())
+//            System.out.println("Key = " + entry.getKey() +
+//                    ", Value = " + entry.getValue());
+//        log.info("Min_temp = {}", map.get("temp_min"));
+//        log.info("Max_temp = {}", map.get("temp_max"));
     }
 
 }
