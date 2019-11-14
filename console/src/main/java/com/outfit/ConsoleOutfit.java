@@ -1,5 +1,7 @@
 package com.outfit;
 
+import com.outfit.repo.PersonsRepository;
+import com.outfit.security.PasswordUtils;
 import com.outfit.service.CommonService;
 import com.outfit.weather.WeatherApiConnection;
 import lombok.extern.slf4j.Slf4j;
@@ -81,6 +83,9 @@ public class ConsoleOutfit {
     @Autowired
     CommonService commonService;
 
+    @Autowired
+    PersonsRepository personsRepository;
+
 
 //    public ConsoleOutfit(WeatherApiConnection weatherApiConnection) {
 //        this.weatherApiConnection = new WeatherApiConnection("27502", "US");
@@ -89,6 +94,29 @@ public class ConsoleOutfit {
     @EventListener(ContextRefreshedEvent.class)
     public void start() {
         log.info("start() --> Container ready for use.");
+        String salt = PasswordUtils.getSalt(30);
+        log.info("salt = {}", salt);
+        String securePassword = PasswordUtils.generateSecurePassword("2345", salt);
+        log.info("securePassword = {}", securePassword);
+        salt = PasswordUtils.getSalt(30);
+        log.info("salt = {}", salt);
+        securePassword = PasswordUtils.generateSecurePassword("4444", salt);
+        log.info("securePassword = {}", securePassword);
+        salt = PasswordUtils.getSalt(30);
+        log.info("salt = {}", salt);
+        securePassword = PasswordUtils.generateSecurePassword("erinlogin", salt);
+        log.info("securePassword = {}", securePassword);
+//        Boolean test = PasswordUtils.verifyUserPassword("1234", "FU6vbvs91K0qS1g3Wy8dQSDHJFsud5OW0dPGEzxEuY4=", "n73zJyQzLebqSVqfX9mMjDzPTN1BEY");
+//        String testString = test.toString();
+//        log.info("testString = {}", testString);
+//        Persons temp = personsRepository.getByEmail("ruwesam@gmail.com");
+//        log.info("temp = {}", temp.getFirstname());
+//        int test = commonService.login("ruwesam@gmail.com", "1234");
+//        int test = PasswordUtils.login("ruwesam@gmail.com", "1234");
+//        log.info("test = {}", test);
+
+
+
 //        Map<String, Object> map = weatherApiConnection.getMaps(27502, "US");
 //        System.out.println(map.get("temp_min"));
 

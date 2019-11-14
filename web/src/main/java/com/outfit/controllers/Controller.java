@@ -1,17 +1,21 @@
 package com.outfit.controllers;
 
 import com.outfit.domain.Clothes;
+import com.outfit.domain.Persons;
 import com.outfit.dto.LoginDto;
+import com.outfit.dto.PersonsDto;
 import com.outfit.service.DataService;
 import com.outfit.util.OutfitAppMappings;
 import com.outfit.util.ViewNames;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Iterator;
 import java.util.List;
 
 @org.springframework.stereotype.Controller
@@ -47,29 +51,49 @@ public class Controller {
         return mav;
     }
 
+//    @RequestMapping(OutfitAppMappings.HOME)
+//    public String viewHomePage(@ModelAttribute LoginDto enteredLoginDto, Model model) {
+//        log.info("in viewHomePage");
+//        LoginDto tempLoginDto;
+//        List<LoginDto> loginList = dataService.getLoginList();
+//        Iterator<LoginDto> it = loginList.iterator();
+//        log.info("loginList.size = {}", loginList.size());
+//        while (it.hasNext()) {
+//            tempLoginDto = it.next();
+//            log.info("in while loop");
+//            log.info("tempLoginDto.getEmail = {}", tempLoginDto.getEmail());
+//            log.info("tempLoginDto.getPassword = {}", tempLoginDto.getPassword());
+//            log.info("enteredLoginDto.getEmail = {}", enteredLoginDto.getEmail());
+//            log.info("enteredLoginDto.getPassword = {}", enteredLoginDto.getPassword());
+//            if(tempLoginDto.getEmail().equalsIgnoreCase(enteredLoginDto.getEmail()) &&
+//            tempLoginDto.getPassword().equalsIgnoreCase(enteredLoginDto.getPassword())) {
+//                Persons persons = dataService.getPersons(tempLoginDto.getId());
+//                model.addAttribute("persons", persons);
+//                return ViewNames.HOME;
+//            }
+//        }
+//        return "redirect:/login";
+//    }
+
     @RequestMapping(OutfitAppMappings.HOME)
     public String viewHomePage(@ModelAttribute LoginDto enteredLoginDto, Model model) {
         log.info("in viewHomePage");
         LoginDto tempLoginDto;
-        List<LoginDto> loginList = dataService.getLoginList();
-        Iterator<LoginDto> it = loginList.iterator();
-        log.info("loginList.size = {}", loginList.size());
-        while (it.hasNext()) {
-            tempLoginDto = it.next();
-            log.info("in while loop");
-            log.info("tempLoginDto.getEmail = {}", tempLoginDto.getEmail());
-            log.info("tempLoginDto.getPassword = {}", tempLoginDto.getPassword());
-            log.info("enteredLoginDto.getEmail = {}", enteredLoginDto.getEmail());
-            log.info("enteredLoginDto.getPassword = {}", enteredLoginDto.getPassword());
-            if(tempLoginDto.getEmail().equalsIgnoreCase(enteredLoginDto.getEmail()) &&
-            tempLoginDto.getPassword().equalsIgnoreCase(enteredLoginDto.getPassword())) {
-                model.addAttribute(tempLoginDto.getId());
-                return ViewNames.HOME;
-            }
+        enteredLoginDto.setId(dataService.login(enteredLoginDto.getEmail(), enteredLoginDto.getPassword()));
+        if(enteredLoginDto.getId() != -1) {
+            Persons persons = dataService.getPersons(enteredLoginDto.getId());
+            model.addAttribute("persons", persons);
+            return ViewNames.HOME;
         }
-        return "redirect:/login";
+        return "redirect:/";
     }
 
+    @RequestMapping("signUp")
+    public String signUp(Model model) {
+        PersonsDto personsDto = new PersonsDto();
+        model.addAttribute("personsDto", personsDto);
+        return "signUp";
+    }
     @RequestMapping("/listClothes/{id}")
     public String listClothes(@PathVariable(name = "id") int id, Model model) {
         List<Clothes> list = dataService.listClothes(id);

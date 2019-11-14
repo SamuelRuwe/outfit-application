@@ -11,4 +11,8 @@ public interface PersonsRepository extends JpaRepository<Persons, Integer> {
             + "countrycode AS countrycode " + "FROM Persons",
             nativeQuery = true)
     public Persons getPersonsDetails(int id);
+
+    @Query(value = "Select * from Persons WHERE email = ?1",
+    nativeQuery = true)
+    public Persons getByEmail(String email);
 }

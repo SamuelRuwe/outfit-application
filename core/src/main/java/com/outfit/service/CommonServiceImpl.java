@@ -3,8 +3,10 @@ package com.outfit.service;
 import com.outfit.domain.Clothes;
 import com.outfit.domain.Persons;
 import com.outfit.dto.LoginDto;
+import com.outfit.dto.PersonsDto;
 import com.outfit.repo.ClothesRepository;
 import com.outfit.repo.PersonsRepository;
+import com.outfit.security.PasswordUtils;
 import com.outfit.weather.Weather;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,8 @@ public class CommonServiceImpl implements CommonService {
     private Weather weather;
     @Autowired
     private LoginDto loginDto;
+    @Autowired
+    private PersonsDto personsDto;
 
     // == public methods ==
 
@@ -108,26 +112,32 @@ public class CommonServiceImpl implements CommonService {
         return newList;
     }
 
+//    @Override
+//    public List<LoginDto> loginCheckList() {
+//        List<LoginDto> listLogInDto = new ArrayList<>();
+//        List<Persons> personsList = listPersons();
+//        Persons tempPerson;
+//        Iterator<Persons> it = personsList.iterator();
+//        while(it.hasNext()) {
+//            LoginDto tempLoginDto = new LoginDto();
+//            tempPerson = it.next();
+//            tempLoginDto.setId(tempPerson.getId());
+//            tempLoginDto.setEmail(tempPerson.getEmail());
+//            tempLoginDto.setPassword(tempPerson.getPassword());
+//            listLogInDto.add(tempLoginDto);
+//            log.info("logInCheckList adding {}", tempPerson.getFirstname());
+//        }
+//        Iterator<LoginDto> it2 = listLogInDto.iterator();
+//        while(it.hasNext()) {
+//            LoginDto temp = it2.next();
+//            log.info("temp email = {}", temp.getEmail());
+//        }
+//        return listLogInDto;
+//    }
+
     @Override
-    public List<LoginDto> loginCheckList() {
-        List<LoginDto> listLogInDto = new ArrayList<>();
-        List<Persons> personsList = listPersons();
-        Persons tempPerson;
-        Iterator<Persons> it = personsList.iterator();
-        while(it.hasNext()) {
-            LoginDto tempLoginDto = new LoginDto();
-            tempPerson = it.next();
-            tempLoginDto.setId(tempPerson.getId());
-            tempLoginDto.setEmail(tempPerson.getEmail());
-            tempLoginDto.setPassword(tempPerson.getPassword());
-            listLogInDto.add(tempLoginDto);
-            log.info("logInCheckList adding {}", tempPerson.getFirstname());
-        }
-        Iterator<LoginDto> it2 = listLogInDto.iterator();
-        while(it.hasNext()) {
-            LoginDto temp = it2.next();
-            log.info("temp email = {}", temp.getEmail());
-        }
-        return listLogInDto;
+    public int login(String email, String providedPassword) {
+        Persons temp = personsRepository.getByEmail(email);
+        return PasswordUtils.login(temp, providedPassword);
     }
 }

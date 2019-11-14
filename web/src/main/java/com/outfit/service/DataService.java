@@ -2,7 +2,6 @@ package com.outfit.service;
 
 import com.outfit.domain.Clothes;
 import com.outfit.domain.Persons;
-import com.outfit.dto.LoginDto;
 
 import java.util.List;
 
@@ -20,6 +19,10 @@ public interface DataService {
 
     void deleteClothes(int id);
 
-    List<LoginDto> getLoginList();
+//    List<LoginDto> getLoginList();
+
+    Persons getPersons(int id);
+
+    int login(String email, String providedpassword);
 
 }

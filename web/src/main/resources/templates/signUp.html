@@ -2,7 +2,7 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Add Clothes</title>
+    <title>Create Account</title>
     <meta charset="UTF-8">
     <link id="link" type="text/css" rel="stylesheet" />
 </head>
@@ -10,50 +10,46 @@
 
 <div class="main">
 
-    <form th:action="@{/saveClothes}" th:object="${clothes}">
+    <form th:action="@{/savePerson}" th:object="${personsDto}">
         <table border="1" width="90%" align="center" cellpadding="5">
             <tr>
                 <td class="fheading"  colspan="4">Clothes Form</td>
             </tr>
 
             <tr>
-                <td>Owner ID</td>
+                <td>Username</td>
                 <td>
-                    <input type="text" th:field="*{ownerid}" readonly="readonly"/>
+                    <input type="text" th:field="*{username}"/>
                 </td>
             </tr>
             <tr>
-                <td>Type</td>
+                <td>Password</td>
                 <td>
-                    <input type="text" th:field="*{type}"/>
+                    <input type="password" th:field="*{password}"/>
                 </td>
-                <td>Color</td>
+                <td>First Name</td>
                 <td>
-                    <input type="text" th:field="*{color}" />
-                </td>
-            </tr>
-            <tr>
-                <td>Formal</td>
-                <td>
-                    <input type="text" th:field="*{formal}"/>
-                </td>
-                <td>Min Temp</td>
-                <td>
-                    <input type="text" th:field="*{mintemp}"/>
+                    <input type="text" th:field="*{firstname}" />
                 </td>
             </tr>
             <tr>
-                <td>Max Temp</td>
+                <td>Last Name</td>
                 <td>
-                    <input type="text" th:field="*{maxtemp}"/>
+                    <input type="text" th:field="*{lastname}"/>
                 </td>
-                <td>Last Worn</td>
+                <td>Email</td>
                 <td>
-                    <input type="text" th:field="*{lastworn}"/>
+                    <input type="email" th:field="*{email}"/>
                 </td>
-                <td>Clean</td>
+            </tr>
+            <tr>
+                <td>Zipcode</td>
                 <td>
-                    <input type="text" th:field="*{clean}"/>
+                    <input type="text" th:field="*{zipcode}"/>
+                </td>
+                <td>Country Code</td>
+                <td>
+                    <input type="text" th:field="*{countrycode}"/>
                 </td>
             </tr>
             <tr>

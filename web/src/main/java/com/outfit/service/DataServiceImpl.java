@@ -2,12 +2,10 @@ package com.outfit.service;
 
 import com.outfit.domain.Clothes;
 import com.outfit.domain.Persons;
-import com.outfit.dto.LoginDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -51,15 +49,27 @@ public class DataServiceImpl implements DataService {
         commonService.deleteClothes(id);
     }
 
+//    @Override
+//    public List<LoginDto> getLoginList() {
+//        Iterator<LoginDto> it = commonService.loginCheckList().iterator();
+//        while(it.hasNext()) {
+//            LoginDto temp = it.next();
+//            log.info("temp email = {}", temp.getEmail());
+//        }
+//        return commonService.loginCheckList();
+//    }
+
     @Override
-    public List<LoginDto> getLoginList() {
-        Iterator<LoginDto> it = commonService.loginCheckList().iterator();
-        while(it.hasNext()) {
-            LoginDto temp = it.next();
-            log.info("temp email = {}", temp.getEmail());
-        }
-        return commonService.loginCheckList();
+    public Persons getPersons(int id) {
+        return commonService.getPersons(id);
     }
+
+    @Override
+    public int login(String email, String providedpassword) {
+        return commonService.login(email, providedpassword);
+    }
+
+
 
     //    @Override
 //    public List<Clothes> weatherAppropriateClothes(int id, int zipCode, String countryCode) {

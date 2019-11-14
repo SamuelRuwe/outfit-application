@@ -1,0 +1,4 @@
+<thLogic>
+    <attr sel="#link"
+          th:href="@{/home.css}"/>
+</thLogic>

@@ -2,7 +2,6 @@ package com.outfit.service;
 
 import com.outfit.domain.Clothes;
 import com.outfit.domain.Persons;
-import com.outfit.dto.LoginDto;
 
 import java.util.List;
 
@@ -28,5 +27,7 @@ public interface CommonService {
 
     List<Clothes> inTempRange(int id);
 
-    List<LoginDto> loginCheckList();
+//    List<LoginDto> loginCheckList();
+
+    int login(String email, String providedPassword);
 }

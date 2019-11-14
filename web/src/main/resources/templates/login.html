@@ -2,8 +2,9 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Login Form</title>
     <meta charset="UTF-8">
+    <title>Login Form</title>
+    <link id="link" type="text/css" rel="stylesheet" />
 </head>
 <body>
 <div class="main">
@@ -31,6 +32,9 @@
 
         </table>
     </form>
+
+    <a th:href="@{/signUp}">Sign Up Here!</a>
+
 </div>
 </body>
 </html>
