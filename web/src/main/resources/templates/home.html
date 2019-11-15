@@ -7,10 +7,12 @@
 </head>
 <body>
 
-    <div th:object="${persons}">
+<div th:insert="menu"></div>
 
-    <h1 id="homeMessage">Welcome <span th:text="${persons.firstname}"/> to your home page!</h1>
-    <h1><a th:href="@{'/listClothes/' + ${persons.id}}">Do Something Else</a></h1>
+    <div th:object="${session.persons}">
+
+    <h1 id="homeMessage">Welcome <span th:text="${session.persons.firstname}"/> to your home page!</h1>
+    <h1><a th:href="@{'/listClothes/' + ${session.persons.id}}">Do Something Else</a></h1>
     </div>
 
     <table border="1" width="50%" align="center" cellpadding="5">

@@ -11,7 +11,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName(ViewNames.HOME);
-        registry.addViewController("/home").setViewName("menu"); /// change this to make it so the id is passed around?
+//        registry.addViewController("/home").setViewName("menu"); /// change this to make it so the id is passed around?
 
     }
 }

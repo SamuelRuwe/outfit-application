@@ -11,10 +11,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @org.springframework.stereotype.Controller
 @Slf4j
+@SessionAttributes("persons")
 public class LoginController {
 
     // == fields ==
@@ -47,17 +52,36 @@ public class LoginController {
     }
 
     @RequestMapping(OutfitAppMappings.HOME)
-    public String viewHomePage(@ModelAttribute LoginDto enteredLoginDto, Model model) {
+    public String viewHomePage(@ModelAttribute LoginDto enteredLoginDto, @ModelAttribute Persons persons,
+                               HttpSession session, HttpServletRequest request,
+                               Model model) {
+        if(persons != null) {
+            return "home";
+        }
         log.info("in viewHomePage");
         LoginDto tempLoginDto;
         enteredLoginDto.setId(dataService.login(enteredLoginDto.getEmail(), enteredLoginDto.getPassword()));
         if(enteredLoginDto.getId() != -1) {
-            Persons persons = dataService.getPersons(enteredLoginDto.getId());
+//            Persons persons = dataService.getPersons(enteredLoginDto.getId());
+            persons = dataService.getPersons(enteredLoginDto.getId());
             model.addAttribute("persons", persons);
+            log.info("Session test = {}", session.getAttributeNames().toString());
+            log.info("Request Test = {}", request.getAttributeNames());
+            model.addAttribute("id", persons.getId());
+
+            /// think i can clean not add the persons object and instead just add id. Will test later 11/15/2019 - SR
+
+
             log.info("id = {}", persons.getId());
             return ViewNames.HOME;
         }
         return "redirect:/";
+    }
+
+    @ModelAttribute
+    public Persons addStuffTest2() {
+        Persons persons = null;
+        return persons;
     }
 
 //    @RequestMapping(OutfitAppMappings.HOME)

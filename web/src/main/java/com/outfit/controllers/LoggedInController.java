@@ -16,6 +16,7 @@ import java.util.List;
 @Slf4j
 @Controller
 @ControllerAdvice
+@SessionAttributes("persons")
 public class LoggedInController {
 
     private DataService dataService;
@@ -26,6 +27,22 @@ public class LoggedInController {
     }
 
     // == pages ==
+
+//    @RequestMapping(OutfitAppMappings.HOME)
+//    public String viewHomePage(@ModelAttribute LoginDto enteredLoginDto, Model model) {
+//        log.info("in viewHomePage");
+//        LoginDto tempLoginDto;
+//        enteredLoginDto.setId(dataService.login(enteredLoginDto.getEmail(), enteredLoginDto.getPassword()));
+//        if(enteredLoginDto.getId() != -1) {
+//            Persons persons = dataService.getPersons(enteredLoginDto.getId());
+//            model.addAttribute("persons", persons);
+//            model.addAttribute("id", persons.getId());
+//            log.info("id = {}", persons.getId());
+//            return ViewNames.HOME;
+//        }
+//        return "redirect:/";
+//    }
+
 
     @RequestMapping("signUp")
     public String signUp(Model model) {
@@ -61,6 +78,8 @@ public class LoggedInController {
         Clothes clothes = dataService.getClothes(id);
         mav.addObject("clothes", clothes);
         return mav;
+
+        /// check and see if this can be a string like the rest of the stuff
     }
 
     @RequestMapping("deleteClothes/{id}")
@@ -69,7 +88,7 @@ public class LoggedInController {
         return "listClothes/" + id;
     }
 
-    @RequestMapping("/addClothes/{id}")
+    @RequestMapping("addClothes/{id}")
     public String addClothes(@PathVariable(name = "id")int id, Model model) {
         Clothes clothes = new Clothes();
         clothes.setOwnerid(id);
@@ -91,10 +110,4 @@ public class LoggedInController {
         return "redirect:/";
     }
 
-
-
-//    @ModelAttribute
-//    public void addAttributes(Model model) {
-//        model.addAttribute("persons", persons);
-//    }
 }

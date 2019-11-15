@@ -1,21 +1,22 @@
-<!--<div class="sidenav">-->
+<div class="sidenav">
 
-<!--    <div class="mheader">-->
-<!--        Closet-->
-<!--    </div>-->
-<!--    <a th:href="@{'/listClothes/' + ${persons.id}}">List All Clothes</a>-->
+    <div class="mheader">
+        Closet
+    </div>
+    <a th:href="@{'/listClothes/' + ${session.persons.id}}">List All Clothes</a>
+    <a th:href="@{'/listClothesInTemp/' + ${session.persons.id}}">List Clothes in Temp Range</a>
+    <div class="mheader">
+        Clothes
+    </div>
 
-<!--    <div class="mheader">-->
-<!--        Institute-->
-<!--    </div>-->
 
-<!--    <a th:href="@{'/listClothes/' + ${persons.id}}">Do Something Else</a>-->
-<!--    <a th:href="@{/}">Do another thing</a>-->
+    <a th:href="@{'/addClothes/' + ${session.persons.id}}">Add Clothes</a>
+    <a th:href="@{'/listClothesInTemp/' + ${session.persons.id}}">Weather (Not implemented yet)</a>
+    <div class="mheader">
+        Options
+    </div>
+    <a th:href="@{/home}">Home</a>
+    <a th:href="@{/logout}">Log Out</a>
 
-<!--    <div class="mheader">-->
-<!--        Log Out-->
-<!--    </div>-->
-<!--    <a th:href="@{/}">Log Out</a>-->
-
-<!--</div>-->
+</div>
 
