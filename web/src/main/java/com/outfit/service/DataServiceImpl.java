@@ -69,7 +69,10 @@ public class DataServiceImpl implements DataService {
         return commonService.login(email, providedpassword);
     }
 
-
+    @Override
+    public void savePersons(Persons persons) {
+        commonService.savePersons(persons);
+    }
 
     //    @Override
 //    public List<Clothes> weatherAppropriateClothes(int id, int zipCode, String countryCode) {

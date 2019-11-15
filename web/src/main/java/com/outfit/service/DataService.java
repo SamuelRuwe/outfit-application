@@ -25,4 +25,6 @@ public interface DataService {
 
     int login(String email, String providedpassword);
 
+    void savePersons(Persons persons);
+
 }

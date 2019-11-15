@@ -8,6 +8,8 @@
 </head>
 <body>
 
+    <div th:insert="menu"></div>
+
 <div class="main">
 
     <form th:action="@{/saveClothes}" th:object="${clothes}">

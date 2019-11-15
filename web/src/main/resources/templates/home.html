@@ -6,7 +6,33 @@
     <link id="link" type="text/css" rel="stylesheet" />
 </head>
 <body>
+
+    <div th:object="${persons}">
+
     <h1 id="homeMessage">Welcome <span th:text="${persons.firstname}"/> to your home page!</h1>
+    <h1><a th:href="@{'/listClothes/' + ${persons.id}}">Do Something Else</a></h1>
+    </div>
+
+    <table border="1" width="50%" align="center" cellpadding="5">
+        <thead>
+
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+            <td th:text="${persons.id}">ID</td>
+            <td th:text="${persons.username}">Username</td>
+            <td th:text="${persons.firstname}">First Name</td>
+            <td th:text="${persons.lastname}">Last Name</td>
+            <td th:text="${persons.email}">Email</td>
+        </tbody>
+
+    </table>
 
 </body>
 </html>
