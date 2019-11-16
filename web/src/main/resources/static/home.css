@@ -29,6 +29,10 @@ table th{
 button{
     height: 30px; width: 100px; background-color: #009999; color: #ffffff;
 }
+
+.noDisplay {
+        display: none;
+}
 .sidenav {
     height: 100%;
     width: 160px;

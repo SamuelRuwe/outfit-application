@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Pants</title>
+    <title>Edit Clothes</title>
     <link id="link" type="text/css" rel="stylesheet" />
 </head>
 <body>
@@ -11,45 +11,67 @@
 
 <div align="center">
     <h1>Edit Clothes</h1>
+    <h1 th:text="${session.persons.id}"></h1>
     <br/>
-    <form action="#" th:action="@{/saveClothes}" th:object="${clothes}" method="post">
+    <form action="#" th:action="@{/saveClothes}" th:object="${clothesDto}" method="post">
         <table border="0" align="center" cellpadding="10">
 
             <tr>
                 <td>Clothes id:</td>
-                <td><input type="text" th:field="*{id}" readonly="readonly"></td>
+                <td><input type="text" th:field="${clothesDto.clothesDtoId}" readonly="readonly"></td>
             </tr>
             <tr>
                 <td>Ownerid:</td>
-                <td><input type="text" th:field="*{ownerid}"></td>
+                <td><input type="text" th:field="${clothesDto.ownerid}"></td>
             </tr>
             <tr>
                 <td>Type:</td>
-                <td><input type="text" th:field="*{type}"></td>
+                <td>
+                    <div class="clothesTypeDropdown">
+                        <select class="form-control" th:field="${clothesDto.type}">
+                            <option value="0">Type of Clothing</option>
+                            <option th:each="clothingType : ${clothingType}" th:value="${clothingType}" th:text="${clothingType}"></option>
+                        </select>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td>Color:</td>
-                <td><input type="text" th:field="*{color}"></td>
+                <td><input type="text" th:field="${clothesDto.color}"></td>
             </tr>
             <tr>
                 <td>Formal:</td>
-                <td><input type="text" th:field="*{formal}"></td>
+                <td>
+                    <div class="clothesTypeDropdown">
+                        <select class="form-control" th:field="${clothesDto.formal}">
+                            <option value="False">False</option>
+                            <option value="True">True</option>
+                        </select>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td>Min Temp:</td>
-                <td><input type="text" th:field="*{mintemp}"></td>
+                <td><input type="text" th:field="${clothesDto.mintemp}"></td>
             </tr>
             <tr>
                 <td>Max Temp:</td>
-                <td><input type="text" th:field="*{maxtemp}"></td>
+                <td><input type="text" th:field="${clothesDto.maxtemp}"></td>
             </tr>
             <tr>
                 <td>Lastworn:</td>
-                <td><input type="text" th:field="*{lastworn}"></td>
+                <td><input type="text" th:field="${clothesDto.lastworn}"></td>
             </tr>
             <tr>
                 <td>Clean:</td>
-                <td><input type="text" th:field="*{clean}"></td>
+                <td>
+                    <div class="clothesTypeDropdown">
+                        <select class="form-control" th:field="${clothesDto.clean}">
+                            <option value="False">False</option>
+                            <option value="True">True</option>
+                        </select>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td colspan="2"><button type="submit">Save</button></td>

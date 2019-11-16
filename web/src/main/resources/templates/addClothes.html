@@ -12,7 +12,7 @@
 
 <div class="main">
 
-    <form th:action="@{/saveClothes}" th:object="${clothes}">
+    <form th:action="@{/saveClothes}" th:object="${clothesDto}">
         <table border="1" width="90%" align="center" cellpadding="5">
             <tr>
                 <td class="fheading"  colspan="4">Clothes Form</td>
@@ -24,10 +24,16 @@
                     <input type="text" th:field="*{ownerid}" readonly="readonly"/>
                 </td>
             </tr>
+
             <tr>
                 <td>Type</td>
                 <td>
-                    <input type="text" th:field="*{type}"/>
+                    <div class="clothesTypeDropdown">
+                        <select class="form-control" th:field="*{type}">
+                            <option value="0">Type of Clothing</option>
+                            <option th:each="clothingType : ${clothingType}" th:value="${clothingType}" th:text="${clothingType}"></option>
+                        </select>
+                    </div>
                 </td>
                 <td>Color</td>
                 <td>
@@ -37,7 +43,12 @@
             <tr>
                 <td>Formal</td>
                 <td>
-                    <input type="text" th:field="*{formal}"/>
+                    <div class="clothesTypeDropdown">
+                        <select class="form-control" th:field="*{formal}">
+                            <option value="False">False</option>
+                            <option value="True">True</option>
+                        </select>
+                    </div>
                 </td>
                 <td>Min Temp</td>
                 <td>
@@ -55,7 +66,12 @@
                 </td>
                 <td>Clean</td>
                 <td>
-                    <input type="text" th:field="*{clean}"/>
+                    <div class="clothesTypeDropdown">
+                        <select class="form-control" th:field="*{clean}">
+                            <option value="False">False</option>
+                            <option value="True">True</option>
+                        </select>
+                    </div>
                 </td>
             </tr>
             <tr>

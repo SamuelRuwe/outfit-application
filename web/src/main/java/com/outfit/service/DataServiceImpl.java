@@ -2,10 +2,13 @@ package com.outfit.service;
 
 import com.outfit.domain.Clothes;
 import com.outfit.domain.Persons;
+import com.outfit.dto.ClothesDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -74,7 +77,39 @@ public class DataServiceImpl implements DataService {
         commonService.savePersons(persons);
     }
 
-    //    @Override
+    @Override
+    public List<ClothesDto> listClothesDto(int id) {
+        List<Clothes> listClothes = commonService.listPersonsClothes(id);
+        Iterator<Clothes> it = listClothes.iterator();
+        List<ClothesDto> listClothesDto = new ArrayList<>();
+        while (it.hasNext()) {
+            ClothesDto temp = new ClothesDto(it.next());
+            listClothesDto.add(temp);
+        }
+        return listClothesDto;
+    }
+
+    @Override
+    public void saveClothesDto(ClothesDto clothesDto) {
+        Clothes temp = new Clothes(clothesDto);
+        commonService.saveClothes(temp);
+    }
+
+    @Override
+    public List<String> clothingTypes(int id) {
+        List<String> clothingTypes = new ArrayList();
+        List clothingList = commonService.listPersonsClothes(id);
+        Iterator<Clothes> it = clothingList.iterator();
+        while (it.hasNext()) {
+            Clothes temp = it.next();
+            if (!clothingTypes.contains(temp.getType())) {
+                clothingTypes.add(temp.getType());
+            }
+        }
+        return clothingTypes;
+        // should this be in the core module or here?
+
+        //    @Override
 //    public List<Clothes> weatherAppropriateClothes(int id, int zipCode, String countryCode) {
 //        List<Clothes> list = new ArrayList<>();
 //        Map<String, Object> map = weatherApiConnection.getMaps(zipCode, countryCode);
@@ -88,4 +123,19 @@ public class DataServiceImpl implements DataService {
 //        }
 //        return list; //////////////// haven't checked to see if this works yet so I don't know!
 //    }
+    }
+
+    @Override
+    public List<ClothesDto> listClothesDtoInTempRange(int id) {
+        List<Clothes> listClothes = listClothesInTempRange(id);
+        Iterator<Clothes> it = listClothes.iterator();
+        List<ClothesDto> listClothesDto = new ArrayList<>();
+        while (it.hasNext()) {
+            ClothesDto temp = new ClothesDto(it.next());
+            listClothesDto.add(temp);
+        }
+        return listClothesDto;
+    }
+
+    // this is repeated code. See if there's a way to not repeat it
 }

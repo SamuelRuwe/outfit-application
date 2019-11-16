@@ -1,5 +1,6 @@
 package com.outfit.domain;
 
+import com.outfit.dto.ClothesDto;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,4 +27,16 @@ public class Clothes {
     private int clean;
 
     public Clothes() {}
+
+    public Clothes(ClothesDto clothesDto) {
+        this.id = clothesDto.getClothesDtoId();
+        this.ownerid = clothesDto.getOwnerid();
+        this.type = clothesDto.getType();
+        this.color = clothesDto.getColor();
+        this.formal = clothesDto.isFormal() ? 1 : 0;
+        this.mintemp = clothesDto.getMintemp();
+        this.maxtemp = clothesDto.getMaxtemp();
+        this.lastworn = clothesDto.getLastworn();
+        this.clean = clothesDto.isClean() ? 1 : 0;
+    }
 }

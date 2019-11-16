@@ -13,8 +13,8 @@
     <table border="1" align="center" cellpadding="10">
         <thead>
         <tr>
-            <th>ID</th>
-            <th>Owner ID</th>
+            <th class="noDisplay">ID</th>
+            <th class="noDisplay">Owner ID</th>
             <th>Type</th>
             <th>Color</th>
             <th>Formal</th>
@@ -26,27 +26,25 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="clothes : ${list}">
-            <td th:text="${clothes.id}">ID</td>
-            <td th:text="${clothes.ownerid}">Owner ID</td>
-            <td th:text="${clothes.type}">Type</td>
-            <td th:text="${clothes.color}">Color</td>
-            <td th:text="${clothes.formal}">Formal</td>
-            <td th:text="${clothes.mintemp}">Min Temp</td>
-            <td th:text="${clothes.maxtemp}">Max Temp</td>
-            <td th:text="${clothes.lastworn}">Last Worn</td>
-            <td th:text="${clothes.clean}">Clean</td>
+        <tr th:each="clothesDto : ${list}">
+            <td th:text="${clothesDto.clothesDtoId}" class="noDisplay">ID</td>
+            <td th:text="${clothesDto.ownerid}" class="noDisplay">Owner ID</td>
+            <td th:text="${clothesDto.type}">Type</td>
+            <td th:text="${clothesDto.color}">Color</td>
+            <td th:text="${clothesDto.formal}">Formal</td>
+            <td th:text="${clothesDto.mintemp}">Min Temp</td>
+            <td th:text="${clothesDto.maxtemp}">Max Temp</td>
+            <td th:text="${clothesDto.lastworn}">Last Worn</td>
+            <td th:text="${clothesDto.clean}">Clean</td>
             <td>
-                <a th:href="@{'/editClothes/' + ${clothes.id}}">Edit</a>
+                <a th:href="@{'/editClothes/' + ${clothesDto.clothesDtoId}}">Edit</a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/deleteClothes/' + ${clothes.id}}">Delete</a>
+                <a th:href="@{'/deleteClothes/' + ${clothesDto.clothesDtoId}}">Delete</a>
             </td>
         </tr>
         </tbody>
 
     </table>
-
-
 
 </body>
 </html>
