@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <title>Home Page</title>
     <link id="link" type="text/css" rel="stylesheet" />
+    <script src="../main/resources/scripts/test.js"></script>
+    <script th:src="@{/scripts/test.js}"></script>
 </head>
 <body>
-
 <div th:insert="menu"></div>
 
     <div th:object="${session.persons}">

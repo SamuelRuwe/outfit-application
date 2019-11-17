@@ -29,47 +29,48 @@
                 <td>Type</td>
                 <td>
                     <div class="clothesTypeDropdown">
-                        <select class="form-control" th:field="*{type}">
-                            <option value="0">Type of Clothing</option>
+                        <select class="form-control" th:field="*{type}" required>
                             <option th:each="clothingType : ${clothingType}" th:value="${clothingType}" th:text="${clothingType}"></option>
                         </select>
+                        <input type="text" id="val">
+                        <button id="addButton">Add</button>
                     </div>
                 </td>
                 <td>Color</td>
                 <td>
-                    <input type="text" th:field="*{color}" />
+                    <input type="text" th:field="*{color}" required/>
                 </td>
             </tr>
             <tr>
                 <td>Formal</td>
                 <td>
-                    <div class="clothesTypeDropdown">
-                        <select class="form-control" th:field="*{formal}">
-                            <option value="False">False</option>
+                    <div class="clothesFormalDropdown">
+                        <select class="form-control" th:field="*{formal}" required>
                             <option value="True">True</option>
+                            <option value="False">False</option>
                         </select>
                     </div>
                 </td>
                 <td>Min Temp</td>
                 <td>
-                    <input type="text" th:field="*{mintemp}"/>
+                    <input type="number" pattern="[-+]?[0-9]" th:field="*{mintemp}" required/>
                 </td>
             </tr>
             <tr>
                 <td>Max Temp</td>
                 <td>
-                    <input type="text" th:field="*{maxtemp}"/>
+                    <input type="number" pattern="[-+]?[0-9]" th:field="*{maxtemp}" required/>
                 </td>
                 <td>Last Worn</td>
                 <td>
-                    <input type="text" th:field="*{lastworn}"/>
+                    <input type="number" pattern="[-+]?[0-9]" th:field="*{lastworn}" value="0"/>
                 </td>
                 <td>Clean</td>
                 <td>
-                    <div class="clothesTypeDropdown">
+                    <div class="clothesCleanDropdown">
                         <select class="form-control" th:field="*{clean}">
-                            <option value="False">False</option>
                             <option value="True">True</option>
+                            <option value="False">False</option>
                         </select>
                     </div>
                 </td>
@@ -83,5 +84,6 @@
         </table>
     </form>
 </div>
+<script th:src="@{/scripts/dropDownSelect.js}"></script>
 </body>
 </html>

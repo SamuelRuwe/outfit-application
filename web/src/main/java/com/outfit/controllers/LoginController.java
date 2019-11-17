@@ -71,7 +71,6 @@ public class LoginController {
 
             /// think i can clean not add the persons object and instead just add id. Will test later 11/15/2019 - SR
 
-
             log.info("id = {}", persons.getId());
             return ViewNames.HOME;
         }
