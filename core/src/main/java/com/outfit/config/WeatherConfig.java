@@ -37,4 +37,3 @@ public class WeatherConfig {
 
 }
 
-// moved from a config package in weather if this breaks 11/6/2019

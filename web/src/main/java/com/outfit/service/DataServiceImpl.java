@@ -52,16 +52,6 @@ public class DataServiceImpl implements DataService {
         commonService.deleteClothes(id);
     }
 
-//    @Override
-//    public List<LoginDto> getLoginList() {
-//        Iterator<LoginDto> it = commonService.loginCheckList().iterator();
-//        while(it.hasNext()) {
-//            LoginDto temp = it.next();
-//            log.info("temp email = {}", temp.getEmail());
-//        }
-//        return commonService.loginCheckList();
-//    }
-
     @Override
     public Persons getPersons(int id) {
         return commonService.getPersons(id);
@@ -108,21 +98,6 @@ public class DataServiceImpl implements DataService {
         }
         return clothingTypes;
         // should this be in the core module or here?
-
-        //    @Override
-//    public List<Clothes> weatherAppropriateClothes(int id, int zipCode, String countryCode) {
-//        List<Clothes> list = new ArrayList<>();
-//        Map<String, Object> map = weatherApiConnection.getMaps(zipCode, countryCode);
-//        int minTemp = Integer.parseInt((String) (map.get("temp_min")));
-//        int maxTemp = Integer.parseInt((String) (map.get("temp_max"))) + 1; // add one due to truncation of value (79.9 -- > 79)
-//        List<Clothes> clothesList = commonService.listPersonsClothes(id);
-//        for (Clothes temp : clothesList) {
-//            if (temp.getMintemp() < minTemp && temp.getMaxtemp() < maxTemp) {
-//                list.add(temp);
-//            }
-//        }
-//        return list; //////////////// haven't checked to see if this works yet so I don't know!
-//    }
     }
 
     @Override
@@ -136,6 +111,5 @@ public class DataServiceImpl implements DataService {
         }
         return listClothesDto;
     }
-
     // this is repeated code. See if there's a way to not repeat it
 }

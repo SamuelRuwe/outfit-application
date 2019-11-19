@@ -1,15 +1,32 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Login Form</title>
-    <link id="link" type="text/css" rel="stylesheet" />
-</head>
-<body>
-<div class="main">
 
-    <form th:action="@{/home}" th:object="${loginDto}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Clothing Application</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link id="link" type="text/css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<div th:insert="nav"></div>
+
+<!-- Page Content -->
+<div class="container">
+
+    <h1 class="my-4">Welcome to the Clothing Application!</h1>
+
+    <form class="login-form" th:action="@{/home}" th:object="${loginDto}" method="post" name="loginForm">
         <table border="1" width="90%" align="center" cellpadding="5">
             <tr>
                 <td class="fheading"  colspan="4">Login Form</td>
@@ -17,7 +34,7 @@
             <tr>
                 <td>Email</td>
                 <td>
-                    <input type="text" th:field="*{email}"/>
+                    <input name="emailInput" type="text" th:field="*{email}"/>
                 </td>
                 <td>Password</td>
                 <td>
@@ -26,16 +43,21 @@
             </tr>
             <tr>
                 <td colspan="4" align="center">
-                    <button type="submit">Enter</button>
+                    <button class="btn btn-primary btn-sm button" id="submitLogin">Enter</button>
                 </td>
             </tr>
 
         </table>
     </form>
-<div align="center" border="5">
-    <a th:href="@{/signUp}">Sign Up Here!</a>
+
+
+    <div th:insert="signupLink"></div>
 
 </div>
-</div>
+<!-- /.container -->
+
+<div th:insert="footer"></div>
+
 </body>
+
 </html>

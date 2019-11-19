@@ -112,29 +112,6 @@ public class CommonServiceImpl implements CommonService {
         return newList;
     }
 
-//    @Override
-//    public List<LoginDto> loginCheckList() {
-//        List<LoginDto> listLogInDto = new ArrayList<>();
-//        List<Persons> personsList = listPersons();
-//        Persons tempPerson;
-//        Iterator<Persons> it = personsList.iterator();
-//        while(it.hasNext()) {
-//            LoginDto tempLoginDto = new LoginDto();
-//            tempPerson = it.next();
-//            tempLoginDto.setId(tempPerson.getId());
-//            tempLoginDto.setEmail(tempPerson.getEmail());
-//            tempLoginDto.setPassword(tempPerson.getPassword());
-//            listLogInDto.add(tempLoginDto);
-//            log.info("logInCheckList adding {}", tempPerson.getFirstname());
-//        }
-//        Iterator<LoginDto> it2 = listLogInDto.iterator();
-//        while(it.hasNext()) {
-//            LoginDto temp = it2.next();
-//            log.info("temp email = {}", temp.getEmail());
-//        }
-//        return listLogInDto;
-//    }
-
     @Override
     public int login(String email, String providedPassword) {
         Persons temp = personsRepository.getByEmail(email);

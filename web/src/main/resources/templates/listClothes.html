@@ -1,16 +1,35 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Home Page</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Clothing Application</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
     <link id="link" type="text/css" rel="stylesheet" />
+
 </head>
+
 <body>
 
-    <div th:insert="menu"></div>
+<!-- Navigation -->
+<div th:insert="nav"></div>
 
-    <h1 id="homeMessage">Test Home Page 11/8/2019</h1>
-    <table border="1" align="center" cellpadding="10">
+<!-- Page Content -->
+<div class="container">
+
+    <h1 class="my-4">The Clothing Application</h1>
+
+    <hr>
+
+    <h2>Clothing List</h2>
+
+    <table class="table">
         <thead>
         <tr>
             <th class="noDisplay">ID</th>
@@ -27,15 +46,15 @@
         </thead>
         <tbody>
         <tr th:each="clothesDto : ${list}">
-            <td th:text="${clothesDto.clothesDtoId}" class="noDisplay">ID</td>
-            <td th:text="${clothesDto.ownerid}" class="noDisplay">Owner ID</td>
-            <td th:text="${clothesDto.type}">Type</td>
-            <td th:text="${clothesDto.color}">Color</td>
-            <td th:text="${clothesDto.formal}">Formal</td>
-            <td th:text="${clothesDto.mintemp}">Min Temp</td>
-            <td th:text="${clothesDto.maxtemp}">Max Temp</td>
+            <td th:text="${clothesDto.clothesDtoId}" class="hidden">ID</td>
+            <td th:text="${clothesDto.ownerid}" class="hidden">Owner ID</td>
+            <td class="toUppercase" th:text="${clothesDto.type}">Type</td>
+            <td class="toUppercase" th:text="${clothesDto.color}">Color</td>
+            <td class="toUppercase" th:text="${clothesDto.formal}">Formal</td>
+            <td th:text="${clothesDto.mintemp + '°F'}">Min Temp</td>
+            <td th:text="${clothesDto.maxtemp + '°F'}">Max Temp</td>
             <td th:text="${clothesDto.lastworn}">Last Worn</td>
-            <td th:text="${clothesDto.clean}">Clean</td>
+            <td class="toUppercase" th:text="${clothesDto.clean}">Clean</td>
             <td>
                 <a th:href="@{'/editClothes/' + ${clothesDto.clothesDtoId}}">Edit</a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -46,5 +65,11 @@
 
     </table>
 
+</div>
+<!-- /.container -->
+
+<div th:insert="footer"></div>
+<script th:src="@{/scripts/capitalizeFields.js}"></script>
 </body>
+
 </html>

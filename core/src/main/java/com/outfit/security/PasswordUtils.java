@@ -67,10 +67,6 @@ public class PasswordUtils {
     }
 
     public static int login(Persons persons, String providedPassword) {
-//        Persons temp = personsRepository.getByEmail(email);
-//        if(personsRepository.getByEmail(email) == null) {
-//            return -1;
-//        }
         if (verifyUserPassword(providedPassword, persons.getSecurepassword(), persons.getSalt())) {
             return persons.getId();
         }

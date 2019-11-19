@@ -1,16 +1,30 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Add Clothes</title>
-    <meta charset="UTF-8">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Clothing Application</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
     <link id="link" type="text/css" rel="stylesheet" />
+
 </head>
+
 <body>
 
-    <div th:insert="menu"></div>
+<!-- Navigation -->
+<div th:insert="nav"></div>
 
-<div class="main">
+<!-- Page Content -->
+<div class="container">
+
+    <h1 class="my-4">The Clothing Application!</h1>
 
     <form th:action="@{/saveClothes}" th:object="${clothesDto}">
         <table border="1" width="90%" align="center" cellpadding="5">
@@ -18,7 +32,7 @@
                 <td class="fheading"  colspan="4">Clothes Form</td>
             </tr>
 
-            <tr>
+            <tr class="hidden">
                 <td>Owner ID</td>
                 <td>
                     <input type="text" th:field="*{ownerid}" readonly="readonly"/>
@@ -29,16 +43,16 @@
                 <td>Type</td>
                 <td>
                     <div class="clothesTypeDropdown">
-                        <select class="form-control" th:field="*{type}" required>
-                            <option th:each="clothingType : ${clothingType}" th:value="${clothingType}" th:text="${clothingType}"></option>
+                        <select class="form-control" id="clothesTypeDropdown" th:field="*{type}" required>
+                            <option class="toUppercase" th:each="clothingType : ${clothingType}" th:value="${clothingType}" th:text="${clothingType}"></option>
                         </select>
                         <input type="text" id="val">
-                        <button id="addButton">Add</button>
+                        <button class="btn btn-primary btn-sm button" id="addButton">Add</button>
                     </div>
                 </td>
                 <td>Color</td>
                 <td>
-                    <input type="text" th:field="*{color}" required/>
+                    <input class="toUppercase" type="text" th:field="*{color}" required/>
                 </td>
             </tr>
             <tr>
@@ -69,21 +83,25 @@
                 <td>
                     <div class="clothesCleanDropdown">
                         <select class="form-control" th:field="*{clean}">
-                            <option value="True">True</option>
-                            <option value="False">False</option>
+                            <option class="toUppercase" value="True">True</option>
+                            <option class="toUppercase" value="False">False</option>
                         </select>
                     </div>
                 </td>
             </tr>
             <tr>
                 <td colspan="4" align="center">
-                    <button >Save</button>
+                    <button class="button btn btn-primary btn-sm button">Save</button>
                 </td>
             </tr>
 
         </table>
     </form>
 </div>
+<!-- /.container -->
+<div th:insert="footer"></div>
 <script th:src="@{/scripts/dropDownSelect.js}"></script>
+<script th:src="@{/scripts/capitalizeFields.js}"></script>
 </body>
+
 </html>

@@ -27,7 +27,7 @@ public interface CommonService {
 
     List<Clothes> inTempRange(int id);
 
-//    List<LoginDto> loginCheckList();
+
 
     int login(String email, String providedPassword);
 }

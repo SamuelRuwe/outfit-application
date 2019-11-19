@@ -1,0 +1,327 @@
+// old logincontroller
+
+//    @RequestMapping(OutfitAppMappings.HOME)
+//    public String viewHomePage(Model model) {
+//        List<Persons> list = dataService.listPersons();
+//        model.addAttribute("list", list);
+//        return ViewNames.HOME;
+//    }
+
+
+//    @RequestMapping(OutfitAppMappings.HOME)
+//    public String viewHomePage(@ModelAttribute LoginDto enteredLoginDto, Model model) {
+//        log.info("in viewHomePage");
+//        LoginDto tempLoginDto;
+//        enteredLoginDto.setId(dataService.login(enteredLoginDto.getEmail(), enteredLoginDto.getPassword()));
+//        if(enteredLoginDto.getId() != -1) {
+//            Persons persons = dataService.getPersons(enteredLoginDto.getId());
+//            model.addAttribute("persons", persons);
+//            model.addAttribute("id", persons.getId());
+//            log.info("id = {}", persons.getId());
+//            return ViewNames.HOME;
+//        }
+//        return "redirect:/";
+//    }
+
+//    @RequestMapping("/listClothes/{id}")
+//    public String listClothes(@PathVariable(name = "id") int id, Model model) {
+//        List<Clothes> list = dataService.listClothes(id);
+//        model.addAttribute("list", list);
+//        return "listClothes";
+//    }
+
+//    @RequestMapping(value = "/saveClothes", method = RequestMethod.POST)
+//    public String saveClothesDto(@ModelAttribute ClothesDto clothesDto, @ModelAttribute Persons persons) {
+//        dataService.saveClothesDto(clothesDto);
+//        return "redirect:/listClothes/" + persons.getId();
+//    }
+
+
+//    @RequestMapping("addClothes/{id}")
+//    public String addClothes(@PathVariable(name = "id")int id, Model model) {
+//        Clothes clothes = new Clothes();
+//        clothes.setOwnerid(id);
+//        model.addAttribute("clothes", clothes);
+//        return "addClothes";
+//    }
+
+
+//    @RequestMapping("saveClothes")
+//    public String saveClothes(@ModelAttribute Clothes clothes) {
+//        dataService.saveClothes(clothes);
+//        return "redirect:/listClothes/" + clothes.getOwnerid();
+//    }
+
+//    @RequestMapping(OutfitAppMappings.HOME)
+//    public String viewHomePage(@ModelAttribute LoginDto enteredLoginDto, Model model) {
+//        log.info("in viewHomePage");
+//        LoginDto tempLoginDto;
+//        List<LoginDto> loginList = dataService.getLoginList();
+//        Iterator<LoginDto> it = loginList.iterator();
+//        log.info("loginList.size = {}", loginList.size());
+//        while (it.hasNext()) {
+//            tempLoginDto = it.next();
+//            log.info("in while loop");
+//            log.info("tempLoginDto.getEmail = {}", tempLoginDto.getEmail());
+//            log.info("tempLoginDto.getPassword = {}", tempLoginDto.getPassword());
+//            log.info("enteredLoginDto.getEmail = {}", enteredLoginDto.getEmail());
+//            log.info("enteredLoginDto.getPassword = {}", enteredLoginDto.getPassword());
+//            if(tempLoginDto.getEmail().equalsIgnoreCase(enteredLoginDto.getEmail()) &&
+//            tempLoginDto.getPassword().equalsIgnoreCase(enteredLoginDto.getPassword())) {
+//                Persons persons = dataService.getPersons(tempLoginDto.getId());
+//                model.addAttribute("persons", persons);
+//                return ViewNames.HOME;
+//            }
+//        }
+//        return "redirect:/login";
+//    }
+
+//    @RequestMapping(OutfitAppMappings.HOME)
+//    public String viewHomePage(@ModelAttribute LoginDto enteredLoginDto, Model model) {
+//        log.info("in viewHomePage");
+//        LoginDto tempLoginDto;
+//        enteredLoginDto.setId(dataService.login(enteredLoginDto.getEmail(), enteredLoginDto.getPassword()));
+//        if(enteredLoginDto.getId() != -1) {
+//            Persons persons = dataService.getPersons(enteredLoginDto.getId());
+//            model.addAttribute("persons", persons);
+//            log.info("id = {}", persons.getId());
+//            return ViewNames.HOME;
+//        }
+//        return "redirect:/";
+//    }
+
+//    @RequestMapping("signUp")
+//    public String signUp(Model model) {
+//        PersonsDto personsDto = new PersonsDto();
+//        model.addAttribute("personsDto", personsDto);
+//        return "signUp";
+//    }
+//
+//    @RequestMapping("/listClothes/{id}")
+//    public String listClothes(@PathVariable(name = "id") int id, Model model) {
+//        List<Clothes> list = dataService.listClothes(id);
+//        model.addAttribute("list", list);
+//        return "listClothes";
+//    }
+//
+//    @RequestMapping("listClothesInTemp/{id}")
+//    public String listClothesInTemp(@PathVariable(name = "id") int id, Model model) {
+//        List<Clothes> list = dataService.listClothesInTempRange(id);
+//        model.addAttribute("list", list);
+//        return "listClothes";
+//    }
+//
+//    @RequestMapping(value = "/saveClothes", method = RequestMethod.POST)
+//    public String saveClothes(@ModelAttribute Clothes clothes, Model model) {
+//        dataService.saveClothes(clothes);
+//        return "redirect:/listClothes/" + clothes.getOwnerid();
+//    }
+//
+//    @RequestMapping("/editClothes/{id}")
+//    public ModelAndView editClothes(@PathVariable(name = "id")int id) {
+//        ModelAndView mav = new ModelAndView("editClothes");
+//
+//        Clothes clothes = dataService.getClothes(id);
+//        mav.addObject("clothes", clothes);
+//        return mav;
+//    }
+//
+//    @RequestMapping("deleteClothes/{id}")
+//    public String deleteClothes(@PathVariable(name = "id")int id) {
+//        dataService.deleteClothes(id);
+//        return "listClothes/" + id;
+//    }
+//
+//    @RequestMapping("/addClothes/{id}")
+//    public String addClothes(@PathVariable(name = "id")int id, Model model) {
+//        Clothes clothes = new Clothes();
+//        clothes.setOwnerid(id);
+//        model.addAttribute("clothes", clothes);
+//        return "addClothes";
+//    }
+//
+//    @RequestMapping("saveClothes")
+//    public String saveClothes(@ModelAttribute Clothes clothes) {
+//        dataService.saveClothes(clothes);
+//        return "redirect:/listClothes/" + clothes.getOwnerid();
+//    }
+//
+//    @RequestMapping("savePerson")
+//    public String savePerson(PersonsDto personsDto) {
+//        Persons persons = new Persons(personsDto);
+//        dataService.savePersons(persons);
+//        // create a confirmation page
+//        return "redirect:/";
+//    }
+
+//    @Override
+//    public List<LoginDto> getLoginList() {
+//        Iterator<LoginDto> it = commonService.loginCheckList().iterator();
+//        while(it.hasNext()) {
+//            LoginDto temp = it.next();
+//            log.info("temp email = {}", temp.getEmail());
+//        }
+//        return commonService.loginCheckList();
+//    }
+
+        //    @Override
+//    public List<Clothes> weatherAppropriateClothes(int id, int zipCode, String countryCode) {
+//        List<Clothes> list = new ArrayList<>();
+//        Map<String, Object> map = weatherApiConnection.getMaps(zipCode, countryCode);
+//        int minTemp = Integer.parseInt((String) (map.get("temp_min")));
+//        int maxTemp = Integer.parseInt((String) (map.get("temp_max"))) + 1; // add one due to truncation of value (79.9 -- > 79)
+//        List<Clothes> clothesList = commonService.listPersonsClothes(id);
+//        for (Clothes temp : clothesList) {
+//            if (temp.getMintemp() < minTemp && temp.getMaxtemp() < maxTemp) {
+//                list.add(temp);
+//            }
+//        }
+//        return list; //////////////// haven't checked to see if this works yet so I don't know!
+//    }
+
+//        Persons temp = personsRepository.getByEmail(email);
+//        if(personsRepository.getByEmail(email) == null) {
+//            return -1;
+//        }
+
+//    List<LoginDto> loginCheckList();
+
+
+//    @Override
+//    public List<LoginDto> loginCheckList() {
+//        List<LoginDto> listLogInDto = new ArrayList<>();
+//        List<Persons> personsList = listPersons();
+//        Persons tempPerson;
+//        Iterator<Persons> it = personsList.iterator();
+//        while(it.hasNext()) {
+//            LoginDto tempLoginDto = new LoginDto();
+//            tempPerson = it.next();
+//            tempLoginDto.setId(tempPerson.getId());
+//            tempLoginDto.setEmail(tempPerson.getEmail());
+//            tempLoginDto.setPassword(tempPerson.getPassword());
+//            listLogInDto.add(tempLoginDto);
+//            log.info("logInCheckList adding {}", tempPerson.getFirstname());
+//        }
+//        Iterator<LoginDto> it2 = listLogInDto.iterator();
+//        while(it.hasNext()) {
+//            LoginDto temp = it2.next();
+//            log.info("temp email = {}", temp.getEmail());
+//        }
+//        return listLogInDto;
+//    }
+
+    // old method only here if I need it. Will be removed before release
+//    @Override
+//    public boolean inTempRange(int zipCode, String countryCode, Clothes clothes) {
+//        Map<String, Object> map = weatherApiConnection.getMaps(zipCode, countryCode);
+//        int minTemp = Integer.parseInt((String)(map.get("temp_min")));
+//        int maxTemp = Integer.parseInt((String)(map.get("temp_max"))) + 1; // add one due to truncation of value (79.9 -- > 79)
+//        if(clothes.getMintemp() < minTemp && clothes.getMaxtemp() < maxTemp) {
+//            return true;
+//        }
+//        return false;
+//    }
+
+//        Boolean test = PasswordUtils.verifyUserPassword("1234", "FU6vbvs91K0qS1g3Wy8dQSDHJFsud5OW0dPGEzxEuY4=", "n73zJyQzLebqSVqfX9mMjDzPTN1BEY");
+//        String testString = test.toString();
+//        log.info("testString = {}", testString);
+//        Persons temp = personsRepository.getByEmail("ruwesam@gmail.com");
+//        log.info("temp = {}", temp.getFirstname());
+//        int test = commonService.login("ruwesam@gmail.com", "1234");
+//        int test = PasswordUtils.login("ruwesam@gmail.com", "1234");
+//        log.info("test = {}", test);
+
+
+
+//        Map<String, Object> map = weatherApiConnection.getMaps(27502, "US");
+//        System.out.println(map.get("temp_min"));
+
+
+//            Map<String, Object> map = weatherApiConnection.getMaps(27502, "US");
+//        for (Map.Entry<String,Object> entry : map.entrySet())
+//            System.out.println("Key = " + entry.getKey() +
+//                    ", Value = " + entry.getValue());
+//        log.info("Min_temp = {}", map.get("temp_min"));
+//        log.info("Max_temp = {}", map.get("temp_max"));
+
+    //private static final Logger log = LoggerFactory.getLogger(ConsoleNumberGuess.class);
+
+//    // == fields ==
+//    private Weather weather;
+//
+////    private PersonService service;
+//
+//    @Autowired
+//    private PersonService service;
+//
+//    @Autowired
+//    private HatService hatService;
+//
+//    @Autowired
+//    private PantsService pantsService;
+//
+//    @Autowired
+//    private ShirtService shirtService;
+//
+//    @Autowired
+//    private JacketService jacketService;
+//
+//    @Autowired
+//    private CommonServiceImpl commonService;
+//
+//    public ConsoleOutfit(Weather weather, PersonService service, HatService hatService, PantsService pantsService,
+//                         ShirtService shirtService, JacketService jacketService, CommonServiceImpl commonService) {
+//        this.weather = weather;
+//        this.service = service;
+//        this.hatService = hatService;
+//        this.pantsService = pantsService;
+//        this.shirtService = shirtService;
+//        this.jacketService = jacketService;
+//        this.commonService = commonService;
+//    }
+//
+//    // == events ==
+//    @EventListener(ContextRefreshedEvent.class)
+//    public void start() {
+//        log.info("start() --> Container ready for use.");
+//        List<Clothes> clothesList = commonService.listPersonsClothes(1);
+//        for(Clothes temp : clothesList) {
+//            log.info("Type = {}", temp.getType());
+//        }
+//
+////        List<Object[]> list = shirtService.getShirtDetails(1);
+////        for(Object item[] : list) {
+////            for(int i = 0; i < 2; i++) {
+////                log.info("Object detail = {}", item[i]);
+////                String s = "Username = " + item[i];
+////            }
+//
+//        Scanner scanner = new Scanner(System.in);
+//
+//        while(true) {
+//            System.out.println("test");
+//
+//            int  guess = scanner.nextInt();
+//            scanner.nextLine();
+//
+//        }
+//    }
+
+
+
+//    public ConsoleOutfit(WeatherApiConnection weatherApiConnection) {
+//        this.weatherApiConnection = new WeatherApiConnection("27502", "US");
+//    }
+
+        String salt = PasswordUtils.getSalt(30);
+//        log.info("salt = {}", salt);
+//        String securePassword = PasswordUtils.generateSecurePassword("2345", salt);
+//        log.info("securePassword = {}", securePassword);
+//        salt = PasswordUtils.getSalt(30);
+//        log.info("salt = {}", salt);
+//        securePassword = PasswordUtils.generateSecurePassword("4444", salt);
+//        log.info("securePassword = {}", securePassword);
+//        salt = PasswordUtils.getSalt(30);
+//        log.info("salt = {}", salt);
+//        securePassword = PasswordUtils.generateSecurePassword("erinlogin", salt);
+//        log.info("securePassword = {}", securePassword);

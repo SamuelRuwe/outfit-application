@@ -1,14 +1,30 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Create Account</title>
-    <meta charset="UTF-8">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Clothing Application</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
     <link id="link" type="text/css" rel="stylesheet" />
+
 </head>
+
 <body>
 
-<div class="main">
+<!-- Navigation -->
+<div th:insert="nav"></div>
+
+<!-- Page Content -->
+<div class="container">
+
+    <h1 class="my-4">The Clothing Application!</h1>
 
     <form th:action="@{/savePerson}" th:object="${personsDto}">
         <table border="1" width="90%" align="center" cellpadding="5">
@@ -53,13 +69,19 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="4" align="center">
+                <td class="button">
                     <button >Save</button>
                 </td>
             </tr>
 
         </table>
     </form>
+
 </div>
+<!-- /.container -->
+
+<div th:insert="footer"></div>
+
 </body>
+
 </html>

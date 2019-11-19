@@ -53,21 +53,6 @@ public class WeatherImpl implements Weather {
         return false;
     }
 
-
-    // old method only here if I need it. Will be removed before release
-//    @Override
-//    public boolean inTempRange(int zipCode, String countryCode, Clothes clothes) {
-//        Map<String, Object> map = weatherApiConnection.getMaps(zipCode, countryCode);
-//        int minTemp = Integer.parseInt((String)(map.get("temp_min")));
-//        int maxTemp = Integer.parseInt((String)(map.get("temp_max"))) + 1; // add one due to truncation of value (79.9 -- > 79)
-//        if(clothes.getMintemp() < minTemp && clothes.getMaxtemp() < maxTemp) {
-//            return true;
-//        }
-//        return false;
-//    }
-
-
-
     @Override
     public Map<String, String> currentTemperature(int zipCode, String countryCode) {
         log.info("Zipcode = {}", zipCode);

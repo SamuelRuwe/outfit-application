@@ -20,8 +20,6 @@ public interface DataService {
 
     void deleteClothes(int id);
 
-//    List<LoginDto> getLoginList();
-
     Persons getPersons(int id);
 
     int login(String email, String providedpassword);

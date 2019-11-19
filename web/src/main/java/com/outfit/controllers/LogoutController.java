@@ -11,8 +11,14 @@ public class LogoutController {
 
     @RequestMapping(value = "logout")
     public String logout(SessionStatus session, HttpSession httpSession) {
-        session.isComplete();
-        httpSession.invalidate();
-        return "redirect:/";
+        try {
+            session.isComplete();
+            httpSession.invalidate();
+            return "redirect:/";
+        }  catch (Exception e) {
+            httpSession.invalidate();
+            e.printStackTrace();
+            return "404";
+        }
     }
 }
