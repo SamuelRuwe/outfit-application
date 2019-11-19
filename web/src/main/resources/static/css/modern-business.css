@@ -68,8 +68,12 @@ h2 {
 
 .button {
   display: flex;
-  align-items: center;
+  align: center;
   justify-content: center;
+}
+
+t, td, tr {
+ border-solid: 2px;
 }
 
 .login-form {
@@ -79,4 +83,9 @@ h2 {
 
 .card-header {
  text-align: center;
+}
+
+#buttonInLine {
+ float:right;
+ display: inline;
 }

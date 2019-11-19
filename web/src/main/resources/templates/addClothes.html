@@ -38,8 +38,9 @@
                     <input type="text" th:field="*{ownerid}" readonly="readonly"/>
                 </td>
             </tr>
-
+            <div class="col-md-2"></div>
             <tr>
+                <div class="col-md-4">
                 <td>Type</td>
                 <td>
                     <div class="clothesTypeDropdown">
@@ -47,15 +48,23 @@
                             <option class="toUppercase" th:each="clothingType : ${clothingType}" th:value="${clothingType}" th:text="${clothingType}"></option>
                         </select>
                         <input type="text" id="val">
+                        <span id="buttonInLine">
                         <button class="btn btn-primary btn-sm button" id="addButton">Add</button>
+                        </span>
                     </div>
                 </td>
+                </div>
+                <div class="col-md-4">
                 <td>Color</td>
                 <td>
                     <input class="toUppercase" type="text" th:field="*{color}" required/>
                 </td>
+                </div>
             </tr>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
             <tr>
+                <div class="col-md-4">
                 <td>Formal</td>
                 <td>
                     <div class="clothesFormalDropdown">
@@ -65,20 +74,33 @@
                         </select>
                     </div>
                 </td>
+                </div>
+                <div class="col-md-4">
                 <td>Min Temp</td>
                 <td>
                     <input type="number" pattern="[-+]?[0-9]" th:field="*{mintemp}" required/>
                 </td>
+                </div>
             </tr>
+            <div class="col-md-2"></div>
+            <div class="col-md-2"></div>
             <tr>
+                <div class="col-md-4">
                 <td>Max Temp</td>
                 <td>
                     <input type="number" pattern="[-+]?[0-9]" th:field="*{maxtemp}" required/>
                 </td>
+                </div>
+                <div class="col-md-4">
                 <td>Last Worn</td>
                 <td>
                     <input type="number" pattern="[-+]?[0-9]" th:field="*{lastworn}" value="0"/>
                 </td>
+                </div>
+            </tr>
+            <tr>
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
                 <td>Clean</td>
                 <td>
                     <div class="clothesCleanDropdown">
@@ -88,11 +110,17 @@
                         </select>
                     </div>
                 </td>
+                </div>
+                <div class="col-md-4"></div>
             </tr>
             <tr>
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
                 <td colspan="4" align="center">
                     <button class="button btn btn-primary btn-sm button">Save</button>
                 </td>
+                </div>
+                <div class="col-md-4"></div>
             </tr>
 
         </table>

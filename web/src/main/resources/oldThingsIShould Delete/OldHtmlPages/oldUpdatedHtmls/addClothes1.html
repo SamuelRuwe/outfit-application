@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Clothes</title>
+    <meta charset="UTF-8">
+    <link id="link" type="text/css" rel="stylesheet" />
+</head>
+<body>
+
+    <div th:insert="menu"></div>
+
+<div class="main">
+
+    <form th:action="@{/saveClothes}" th:object="${clothesDto}">
+        <table border="1" width="90%" align="center" cellpadding="5">
+            <tr>
+                <td class="fheading"  colspan="4">Clothes Form</td>
+            </tr>
+
+            <tr>
+                <td>Owner ID</td>
+                <td>
+                    <input type="text" th:field="*{ownerid}" readonly="readonly"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Type</td>
+                <td>
+                    <div class="clothesTypeDropdown">
+                        <select class="form-control" th:field="*{type}" required>
+                            <option th:each="clothingType : ${clothingType}" th:value="${clothingType}" th:text="${clothingType}"></option>
+                        </select>
+                        <input type="text" id="val">
+                        <button id="addButton">Add</button>
+                    </div>
+                </td>
+                <td>Color</td>
+                <td>
+                    <input type="text" th:field="*{color}" required/>
+                </td>
+            </tr>
+            <tr>
+                <td>Formal</td>
+                <td>
+                    <div class="clothesFormalDropdown">
+                        <select class="form-control" th:field="*{formal}" required>
+                            <option value="True">True</option>
+                            <option value="False">False</option>
+                        </select>
+                    </div>
+                </td>
+                <td>Min Temp</td>
+                <td>
+                    <input type="number" pattern="[-+]?[0-9]" th:field="*{mintemp}" required/>
+                </td>
+            </tr>
+            <tr>
+                <td>Max Temp</td>
+                <td>
+                    <input type="number" pattern="[-+]?[0-9]" th:field="*{maxtemp}" required/>
+                </td>
+                <td>Last Worn</td>
+                <td>
+                    <input type="number" pattern="[-+]?[0-9]" th:field="*{lastworn}" value="0"/>
+                </td>
+                <td>Clean</td>
+                <td>
+                    <div class="clothesCleanDropdown">
+                        <select class="form-control" th:field="*{clean}">
+                            <option value="True">True</option>
+                            <option value="False">False</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" align="center">
+                    <button>Save</button>
+                </td>
+            </tr>
+
+        </table>
+    </form>
+</div>
+<script th:src="@{/scripts/dropDownSelect.js}"></script>
+</body>
+</html>

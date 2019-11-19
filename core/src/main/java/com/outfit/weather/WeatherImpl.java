@@ -28,8 +28,8 @@ public class WeatherImpl implements Weather {
     @Autowired
     private WeatherApiConnection weatherApiConnection;
 
-
     // == constructors ==
+
     @Autowired
     public WeatherImpl(@CurrentTemp int currentTemp, @IsRaining boolean isRaining) {
         this.currentTemp = currentTemp;

@@ -141,4 +141,39 @@ public class LoggedInController {
             return "404";
         }
     }
+
+    @RequestMapping("faq")
+    public String faq() {
+        try {
+            return "faq";
+        } catch (Exception e) {
+            return "404";
+        }
+    }
+
+    @RequestMapping("contact")
+    public String contact() {
+        try {
+            return "contact";
+        } catch (Exception e) {
+            return "404";
+        }
+    }
+
+    @RequestMapping("about")
+    public String about() {
+        try {
+            return "about";
+        } catch (Exception e) {
+            return "404";
+        }
+    }
+
+    @ModelAttribute
+    public Persons createModelAttr(@ModelAttribute Persons persons) {
+        if(persons == null) {
+            persons = new Persons();
+        }
+        return persons;
+    }
 }
